@@ -1,0 +1,228 @@
+% Klassifiziert den Dokumenten-Typ
+% Doku: http://exp1.fkp.physik.tu-darmstadt.de/tuddesign/
+% Farben: http://www.tu-darmstadt.de/media/medien_stabsstelle_km/services/medien_cd/das_bild_der_tu_darmstadt.pdf
+%  bigchapter: Chapter haben doppelte Schriftgröße
+%  linedtoc: Linien im Inhaltsverzeichnis wie bei Überschriften
+%  colorbacktitle: Der Dokumenten-Titel wird mir der Accentfarbe hinterlegt
+\documentclass[bigchapter,colorback,accentcolor=tud4b,linedtoc,11pt]{tudreport}
+
+% Input Dokument hat das Encoding UTF-8
+\usepackage[utf8]{inputenc}
+% Wichtiges Paket für Links und verlinktes Inhaltsverzeichnis
+\usepackage[ngerman]{hyperref}
+% Paket für Fußnoten
+\usepackage[stable]{footmisc}
+% Paket für Bibliotheks-Verzeichnis, square: Verwende eckige statt runde klammern
+% \usepackage[square]{natbib}
+% Paket zum Plotten von Datensätzen
+\usepackage{pgfplots}
+% Verwende deutsche Bezeichner für Inhaltsverzeichnis, ... (ngerman = New German: neue Rechtschreibung)
+\usepackage{ngerman}
+% Modul für chemische Formeln
+\usepackage{chemformula}
+% Deutsche Zahlen (entfernt z.B. das Leerzeichen nach einem Dezimal-Komma)
+\usepackage{ziffer} 
+
+\usepackage[verbose]{placeins}
+
+%\usepackage{graphicx}
+%\usepackage{caption}
+\usepackage{subcaption} %Für subfigures
+
+% PDF-Optionen
+\hypersetup{
+  pdftitle={TU Darmstadt \- Physikalisches Praktikum für Fortgeschrittene},
+  pdfauthor={Esra Bauer und Sören Link},
+  pdfsubject={Versuch 3.3-B},
+  pdfview=FitH,
+}
+% Nummeriere formeln in Subsections einzeln
+\numberwithin{equation}{subsection}
+% Kleines makro zur assymetrischen Fehlerangabe
+\def\tol#1#2#3{\hbox{\rule{0pt}{15pt}${#1}^{+{#2}}_{-{#3}}$}}% 
+
+% Entspricht-Zeichen
+\usepackage{scalerel}
+
+\newcommand\equalhat{%
+\let\savearraystretch\arraystretch
+\renewcommand\arraystretch{0.3}
+\begin{array}{c}
+\stretchto{
+    \scalerel*[\widthof{=}]{\wedge}
+    {\rule{1ex}{3ex}}%
+}{0.5ex}\\ 
+=%
+\end{array}
+\let\arraystretch\savearraystretch
+}
+%BEGINN TITELSEITE
+
+\title{Polarisationsanalyse von Licht mittels Stokes-Formalismus}
+
+\subtitle{Esra Bauer  \\Sören Link}
+
+\subsubtitle{Betreuer: David Rupp \hfill Versuchsdatum: 10. November 2014}
+
+\author{Esra Bauer, Sören Link}
+
+%\settitlepicture{img/title.jpg}
+
+\institution{Physikalisches Praktikum \\für Fortgeschrittene \\ Versuch 3.3-B}
+
+\date{\today}
+
+
+%ENDE TITELSEITE
+
+\begin{document}
+%ANFANG DOKUMENT
+
+%Titelseite einfügen
+\maketitle
+
+%Inhaltsverzeichnis einfügen
+\tableofcontents
+
+%ANFANG INHALT
+
+\chapter{Einleitung}
+TODO: Einleitung zum Versuch
+
+Sehr kurze Versuchsbeschreibung, was ist das Ziel des Versuches?
+
+\chapter{Grundlagen}
+\section{Polarisation}
+TODO: Arten von Polarisation, hertellung polarisierten Lichtes
+
+%% Beispiel für das Einbinden von bildern
+% \begin{figure}[ht!]
+% \centering
+% \includegraphics[width=65mm]{img/5074.png}
+% \caption{Energieschema eines HeNe-Lasers}
+% \label{HeNeLaser}
+% \cite{HeNeNiveaus}
+% \end{figure}
+\section{Stokes-Formalismus}
+TODO: Sokes-Parameter, Gleichungn, Vektor-Darstellunn
+
+Beispiele für inline-formeln: \(\lambda_n\) oder $\lambda_n$
+
+Und Formel-Zeilen:
+$$ \nu_{FSR} = \nu_{n+1} - \nu_n = \frac{c}{2L} $$
+
+
+\section{Müller-Matrix-Formalismus}
+TODO: Kurze erklärung was Müller-Matritzen sind und was sie mit dem Stokes-Formalismus zu tun haben
+
+
+\section{Lichtemittierende Dioden und kantenemittierende Halbleiterlaser}
+Wie funktionieren LEDs und was sind unterschiede/gemeinsamkeiten von LEDs und kantenemittierenden Halbleiterlasern
+
+%% Verhundert, dass irgend etwas, das VOR der floatbarrier steht hinter content dargestellt wird, der danach steht
+%% Sehr nützlich für bilder und graphen
+
+%% Beispiel für einen Graphen
+% \begin{figure}[h]
+% \centering
+%                 \begin{tikzpicture}
+% 								\begin{axis}[
+% 								title={Stabilitätsdiagramm},
+% 								xmin=-4,
+% 								xmax=4,
+% 								ymin=-4,
+% 								ymax=4,
+% 								axis y line=center,
+% 								axis x line=center,
+% 								%restrict y to domain=-20:20,
+% 								samples=100,
+% 								xlabel=$g_1$,
+% 								ylabel=$g_2$,
+% 								]
+% 								
+% 								
+% 								\addplot[fill,opacity=0.3,cyan,domain=-5:5,smooth] % smooth breaks \closedcycle
+%   {1/x} \closedcycle;
+% 								\addplot[smooth, dashed, domain=-5:5] {x};
+% 								
+% 								\end{axis}
+% 								\end{tikzpicture}
+% 	\caption{
+% 		Der blau unterlegte Bereich ist stabil. Auf der diagonalen Linie liegen alle symmetrischen Resonatoren. 
+% 	}
+% \end{figure}
+
+\section{VCSEL}
+Kurze beschreibung von VCSELs, besonderheiten (kurze Resonatorlänge, konstruktive interferenz an den spiegelschichten)
+
+\section{Gefahren durch Laserstrahlung und Vorsichtsmaßnahmen}
+Bei dem in diesem Versuch vorliegenden VCSEL Laser mit einigen mW Leistung im roten Spektralbereich sind die potentiellen Gefahren durch Laserstrahlung überschaubar. Vor allem muss hier darauf geachtet werden, dass der Laser nicht in ein Auge gelangt. Aus diesem Grund ist bei eingeschaltetem Laser immer eine Schutzbrille zu Tragen und der Kopf ist nie auf Höhe des Lasers zu halten. Auch sollte darauf geachtet werden, dass potentielle Reflexe des Lasers wenn möglich auf die Laserapparatur selbst zurückgelengt werden und vor allem nicht auf einen Eingang zeigen, da sonst außenstehende ohne Schutzbrille gefährdet werden können.
+
+Bei Lasern mit höherer Intensität ist zudem der Kontakt mit dem Körper zu vermeiden, da ein Laser nicht nur oberflächliche Verbrennungen, sondern im Falle eines UV-Lasers auch Hautkrebs und im Falle eines IR-Lasers schmerzlose und deswegen schwer zu erkennende Verbrennungen im Unterhautgewebe verursachen können. Zur Sichtbarmachung von Lasern sollte deswegen nie die nackte Haut sondern eine nicht reflektierende Oberfläche (beispielsweise ein Schirm, der die verwende Laserleistung aushält) verwendet werden.
+
+Abgesehen von den genannte Personenschäden sind bei nicht sachgemäßer Handlung von Lasern mit hoher Intensität auch Schäden am Versuchsaufbau möglich. Verschmutzte Spiegel oder Fenster des Lasermediums können zu extremer Hitzeentwicklung an jeweiligen Material und letztendlich zu dessen Ermattung oder gar Zerstörung führen.
+%% quellenangabe
+\cite{GefahrenLaser}
+
+\section{Polarisatoren}
+TODO: Glan-Thompson-Polarisationsprismen
+
+\section{Verzögerungsplatten}
+TODO: Lambda-Halbe Plätchen, Zusammengesetzte Verzögerungsplatten, Babinet-Soleil-Kompensator
+
+\section{Drehwinkelaufnehmer}
+TODO: Funktionsweise
+
+\chapter{Durchführung}
+%% SKIZZEN für jeden Durchführungsschritt, genaue Beschreibung aller Einstellungen am Versuchsaufbaue (insbesondere bei änderungen gegenüber vorherigen aufbauten)
+\section{Aufnahme der P-I-Kennlinie der LED}
+TODO: Skizze/Aufbau, Einstellungen, aufgenommene Daten
+
+\section{Auslöschungsverhältniss der Linearpolarisatoren}
+TODO: Skizze/Aufbau, Eintellungen, aufgenommene Daten, wie wurde die Messung durchgeführt?
+
+\section{Bestimmung der wellenlängenaufgelösten Verzögerung des achromatischen Verzögerungsplättchens}
+TODO: Skizze/Aufbau, Einstellungen, aufgenommene Daten, Wellenlängen-Kalibrierung des Verzögerungsplättchens 
+
+\section{Charakterisierung des Polarisationszustandes mit Hilfe des Stokes-Formalismus}
+TODO: Skizze/Aufbau, Einstellungen, aufgenommene Daten, wie wurden die verschiedenen Polarisationen hergestellt?
+
+\section{P-I-Kennlinie der VCSEL}
+TODO: Skizze/Aufbau, Einstellungen, aufgneommene Daten, anmerkung: wurde nach aufgabenteil f gemacht, Leistungsgrenze von 12mA vorgegeben
+
+\section{Polarisationszustand des VCSLEs in Abhägigkeit des Stroms}
+TODO: Skizze/Aufbau, Einstellungen, aufgneommene Daten, anmerkung: wurde vor aufgabenteil e gemacht
+
+\chapter{Auswertung}
+\section{Aufnahme der P-I-Kennlinie der LED}
+TODO: Tabelle, Graph, Fehlerrechnung
+
+\section{Auslöschungsverhältniss der Linearpolarisatoren}
+TODO: Gegenüberstellung, Quotient, Fehlerrechnung
+
+\section{Bestimmung der wellenlängenaufgelösten Verzögerung des achromatischen Verzögerungsplättchens}
+TODO: Berechnung der Kalibrationsfaktoren für die einzelnen Wellenlängen, Fehlerrechnung für Kalibration; Berechnung der Verschiebung durch Verzögerungsplätchen, Umrechnung in Grad/Radian
+
+\section{Charakterisierung des Polarisationszustandes mit Hilfe des Stokes-Formalismus}
+TODO: Berechnung der Stokes-Parameter. Wichtig: Benutzung der in Aufgabenteil d bestimmten, genaueren und von 90° abweichenden, verzögerung des $\frac{\lambda}{4}$ Plättchens. Was ergibt sich für den Aufbau der 3-D Brille?
+
+\section{P-I-Kennlinie der VCSEL}
+TODO: Folerungen für den Laserschutz, Warum kein linearer Anstieg? Fehlerbalken!
+
+\section{Polarisationszustand des VCSLEs in Abhägigkeit des Stroms}
+TODO: Grad und Art der Polarisation des VCSLEs, normieren und Fehlerrechnung
+\chapter{Fazit}
+TODO: Kurze Zusammenfassung über Auswertung. Bewertung der gewonnenen Daten, eingehen auf eventuelle Probleme
+
+%ENDE INHALT
+\cleardoublepage{}
+% Eintrag fürs Inhaltsverzeichnis
+\newpage
+\begin{thebibliography}{100}
+  \bibitem{GefahrenLaser} \url{http://de.wikipedia.org/w/index.php?title=Laser&oldid=128632514#Gefahren}
+\end{thebibliography}
+
+\cleardoublepage{}
+% Eintrag fürs Inhaltsverzeichnis
+% Abbildungsverzeichnis einfügen
+\end{document}
