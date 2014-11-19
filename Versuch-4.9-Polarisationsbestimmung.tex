@@ -85,39 +85,39 @@
 %ANFANG INHALT
 
 \chapter{Einleitung}
-TODO: Einleitung zum Versuch
 
-Sehr kurze Versuchsbeschreibung, was ist das Ziel des Versuches?
+In diesem Versuch wird Licht verschiedener Polarisationszustände hergestellt und untersucht mit dem Ziel, diese Zustände anschließend vollständig beschreiben zu können, d.h. sowohl für vollständig als auch für teilweise polarisiertes Licht. Wenn man von polarisiertem Licht spricht, bezieht man sich stets auf die Richtung, in der der elektrische Feldvektor oszilliert. Wir betrachten im Folgenden Licht im kartesischen Koordinatensystem, also eine transversale elektromagnetische Welle, welche sich in z-Richtung ausbreitet. Zur Einordnung der Polarisation ist folglich das Verhalten der Elektrischen Feldkomponenten $E_x$ und $E_y$ von Bedeutung.
 
 \chapter{Grundlagen}
 \section{Polarisation}
-TODO: Arten von Polarisation, hertellung polarisierten Lichtes
 
-%% Beispiel für das Einbinden von bildern
-% \begin{figure}[ht!]
-% \centering
-% \includegraphics[width=65mm]{img/5074.png}
-% \caption{Energieschema eines HeNe-Lasers}
-% \label{HeNeLaser}
-% \cite{HeNeNiveaus}
-% \end{figure}
+Bei unpolarisiertem Licht, beispielsweise dem Licht der Sonne oder eine Glühlampe, existiert keine feste Beziehung zwischen den Feldkomponenten $E_x$ und $E_y$ bezüglich der Phasenverschiebung $\delta$ und der Beträge $E_{i}$. Schwingt der Feldvektor in einer Ebene, d.h. gilt $\delta=0$, liegt lineare Polarisation vor. Rotiert der Feldvektor um die z-Achse, liegen eine Phasenverschiebung $\delta=\frac{\pi}{2}$ und $E_{x}=E_{y}$ zu Grunde und man spricht von zirkular polarisiertem Licht. Falls $\delta$ einen anderen, jedoch festen Wert annimmt und $E_{x}\neq E_{y}$ gilt, ist die Polarisation elliptisch. 
+
+
 \section{Stokes-Formalismus}
-TODO: Sokes-Parameter, Gleichungn, Vektor-Darstellunn
 
-Beispiele für inline-formeln: \(\lambda_n\) oder $\lambda_n$
+Mittels des sog. Stokes-Formalismus wird es möglich, Mischformen der Polarisationszustände zu klassifizieren und auch den Grad der Polarisation zu bestimmen. Dazu werden die vier Stokes-Parameter wie folgt definiert:
 
-Und Formel-Zeilen:
-$$ \nu_{FSR} = \nu_{n+1} - \nu_n = \frac{c}{2L} $$
+\begin{center}
+$S_0=P_{0} + P_{90}=E_{0x}^2 + E_{0y}^2,$\vspace{\baselineskip}
+
+$S_1=P_{0} - P_{90}=E_{0x}^2 - E_{0y}^2,$\vspace{\baselineskip}
+
+$S_2=P_{45} - P_{135}=2E_{0x} \dcot E_{0y} \cdot cos(\delta),$\vspace{\baselineskip}
+ 
+$S_3=P_{rechts} - P_{links}=2E_{0x} \dcot E_{0y} \cdot sin(\delta)$\vspace{\baselineskip}
+\end{center}
 
 
-\section{Müller-Matrix-Formalismus}
-TODO: Kurze erklärung was Müller-Matritzen sind und was sie mit dem Stokes-Formalismus zu tun haben
+D.h. $S_0$ gibt die Gesamtintensität an, während $S_1$ den in x- oder y- Richtung linar polarisierten Anteil angibt, $S_2$ den Anteil zur x- oder y Achse um 45° Grad verdreht und $S_3$ den rechts- bzw. links zirkular polarisierten Anteil. Wir schreiben die Parameter als Spaktenvektor, den sog. Stokes-Vektor $S$, da es sich herausgestellt hat, dass aus einzelnen Stokes-Vektoren durch vektorielle Addition sinnvolle resultierende Stokes-Vektoren ergeben, auch wenn der Stokes-Vektor im streng mathematischen Sinn kein Vektor ist.
+Es geht also bei diesem Versuch im Wesentlichen darum, für verschiedene Lichtquellen unbekannter Polarisation die entsprechenden Stokes-Vektoren zu berechnen und somit die Polarisation zu bestimmen. Dazu ist es nötig, sich zunächst mit den verwendeten Lichtquellen und der Erzeugung von Polarisation zu befassen. Im Versuch werden eine weiße LED und ein oberflächenemittierender Halbleiterlaser als Lichtquelle verwendet. 
 
 
-\section{Lichtemittierende Dioden und kantenemittierende Halbleiterlaser}
-Wie funktionieren LEDs und was sind unterschiede/gemeinsamkeiten von LEDs und kantenemittierenden Halbleiterlasern
+\section{Lichtemittierende Dioden und Halbleiterlaser}
 
-%% Verhundert, dass irgend etwas, das VOR der floatbarrier steht hinter content dargestellt wird, der danach steht
+Beide Lichtquellen senden Licht nach dem Prinzip von p-n-Übergängen aus, d.h. ein p-dotierter Halbleiter, dessen Ladungsträger "Löcher" sind und ein n-dotierter Halbleiter, dessen Ladungsträger Elektronen sind, stehen in Kontakt, wodurch sich eine sog. Verarmungs- bzw. Raumladungszone ausbildet, d.h. an der Kontaktstelle rekombinieren Elektronen und Löcher derart, dass sich die Fermi-Energien der beiden Materialien angleichen. Nun wird eine Spannung von außen in Durchlassrichtung angelegt, wodurch zusätzliche Elektronen in die n-dotierte Schicht eingebracht werden und zur Verarmungszone wandern, wo sie mit Löchern der p-dotierten Schicht rekombinieren und dabei Energie in Form von Licht freisetzen. Die Wellenlänge ist durch die Größe der Bandlücke bestimmt, da der Energiebetrag der Größe der Bandlücke entspricht. D.h. derartige Lichtquellen senden im Wesentlichen monochromatisches Licht aus und um die besagte weiße LED realisieren zu können, müssen entweder mehrere Halbleiderdioden verschiedener Farben kombiniert werden oder Lumineszenzfarbstoffe auf eine blaue LED aufgebracht werden. Ein weiterer Unterschied zwischen der weißen LED und dem Laser ist der optische Resonator, den nur der Laser besitzt. Im Falle des oberflächenemittierenden Lasers ist der Resonator vertikal ausgerichtet und besteht aus zwei DBR-Spiegeln (engl.: Distributed Bragg Reflectors), zwischen denen konstruktive Interferenz stattfindet. Der Resonator ist extrem kurz (in der Größenordnung einer Wellenlänge), wodurch die Besetzungsinversion, die für das Laserprinzip erforderlich ist, bereits bei einem sehr niedrigem Schwellstrom entsteht.
+
+%% Verhindert, dass irgend etwas, das VOR der floatbarrier steht hinter content dargestellt wird, der danach steht
 %% Sehr nützlich für bilder und graphen
 
 %% Beispiel für einen Graphen
@@ -150,8 +150,28 @@ Wie funktionieren LEDs und was sind unterschiede/gemeinsamkeiten von LEDs und ka
 % 	}
 % \end{figure}
 
-\section{VCSEL}
-Kurze beschreibung von VCSELs, besonderheiten (kurze Resonatorlänge, konstruktive interferenz an den spiegelschichten)
+
+\section{Polarisatoren und $\frac{\lambda}{4}$-Plättchen}
+Beiden Lichtquellen ist gemeinsam, dass sie keine stabile Polarisation besitzen, d.h. diese muss im Versuch selbst hergestellt werden. Zu diesem Zweck bedienen wir uns des Prinzips der Doppelbrechung. Dabei wird Licht, wenn es auf ein doppelbrechendes Material trifft, in zwei Teilstrahlen aufgespalten, für die unterschiedliche Brechungsindizes gelten. Man unterscheidet den ordentlichen Strahl, dessen Polarisation linear und senkrecht zur optischen Achse des Materials (i.d.R. ein Kristall wie z.B. Calcit) ist und der dem Snellius'schen Brechungsgesetz genügt, und den außerordentlichen Strahl, der parallel zur optischen Achse polarisiert ist und dessen Brechungsindex von der Ausbreitungsrichtung relativ zur optischen Achse abhängt. D.h. auf diese Weise können wir linear polarisiertes Licht erzeugen. Im Speziellen arbeiten wir mit Glan-Thomson-Polarisationsprismen, die aus zwei Prismen aus doppelbrechendem Material derart zu einen Quader verbunden sind, dass die opische Achse parallel zur Eintrittsfläche liegt und der ordentliche Strahl an der schrägen Verbindungsfläche beider Prismen total reflektiert wird. Der außerordentliche Strahl tritt ohne Ablenkung wieder aus und ist nun linear polarisiert.
+
+\vspace{\baselineskip}Um zirkular polarisiertes Licht zu erzeugen, wird linear polarisiertes Licht auf ein $\frac{\lambda}{4}$-Plättchen gestrahlt. Dieses besteht wieder aus einem doppelbrechenden Material, dessen optische Achse senkrecht zur Ausbreitungsrichtung steht. Beide Teilstrahlen, ordentlicher und außerordentlicher Strahl treten in gleicher Richtung wieder aus, jedoch mit einer Phasendifferenz von $\frac{\pi}{2}$, d.h. es entsteht zirkular polarisiertes Licht. Im Versuch werden sog. zusammengesetzte $\frac{\lambda}{4}$-Plättchen nullter Ordnung verwendet, d.h. das Licht strahlt durch zwei doppelbrechende Materialen, deren optische Achsen senkrecht zueinander ausgerichtet sind. Die Phasenverschiebung kommt nicht durch die Gesamtdicke des Plättchens zustande, sondern durch die Dickendifferenz der beiden Bestandteile. Dieser Trick ist notwendig, da sich solch geringe Dicken, wie sie für Licht notwendig wären, nicht ohne weiteres herstellen und händeln lassen.
+
+%% Beispiel für das Einbinden von bildern
+% \begin{figure}[ht!]
+% \centering
+% \includegraphics[width=65mm]{img/5074.png}
+% \caption{Energieschema eines HeNe-Lasers}
+% \label{HeNeLaser}
+% \cite{HeNeNiveaus}
+% \end{figure}
+
+
+\section{Müller-Matrix-Formalismus}
+Wie oben beschrieben, lassen sich mit Stokes Vektoren $\vec{S}= (S_0, S_1, S_2, S_3)^T$ resultierende Polarisationszustände berechnen. Das legt nahe, dass man auch Matrizen auf diese Vektoren anwenden darf. Man kann in der Tat optischen Bauteilen sog. Müller-Matrizen zuordnen, die als Transformationsmatrizen für die Stokes Vektoren dienen. Ist ein einfallender Lichtstrahl durch den Stokes-Vektor $S$ charakterisiert und ein optisches Bauteil durch die Müller-Matrix $M$, so ergibt sich der austretende Lichtstrahl zu $S' = M \cdot S$ 
+
+\section{Drehwinkelaufnehmer}
+Um den Drehwinkel des $\frac{\lambda}{4}$-Plättchens kontrollieren zu können bzw. Kennlinien über dem Drehwinkel aufnehmen zu können, steht uns ein Drehwinkelaufnehmer, in den ein $\frac{\lambda}{4}$-Plättchen eingebaut ist, zur Verfügung. Damit ist es uns möglich, den Winkel in Schritten von 5 Grad aufzunehmen, da auf der Oberfläche des Drehwinkelaufnehmers stark und schwach reflektierende Beschichtungen abwechselnd (in 5 Grad Unterteilung) aufgebracht sind, die von einer Reflexionslichtschranke als Signal verarbeitet werden. Die verwendete Software nimmt automatisch einen Leistungswert vom Detektor auf, sobald ein Signal der Lichtschranke vorliegt. 
+
 
 \section{Gefahren durch Laserstrahlung und Vorsichtsmaßnahmen}
 Bei dem in diesem Versuch vorliegenden VCSEL Laser mit einigen mW Leistung im roten Spektralbereich sind die potentiellen Gefahren durch Laserstrahlung überschaubar. Vor allem muss hier darauf geachtet werden, dass der Laser nicht in ein Auge gelangt. Aus diesem Grund ist bei eingeschaltetem Laser immer eine Schutzbrille zu Tragen und der Kopf ist nie auf Höhe des Lasers zu halten. Auch sollte darauf geachtet werden, dass potentielle Reflexe des Lasers wenn möglich auf die Laserapparatur selbst zurückgelengt werden und vor allem nicht auf einen Eingang zeigen, da sonst außenstehende ohne Schutzbrille gefährdet werden können.
@@ -162,14 +182,6 @@ Abgesehen von den genannte Personenschäden sind bei nicht sachgemäßer Handlun
 %% quellenangabe
 \cite{GefahrenLaser}
 
-\section{Polarisatoren}
-TODO: Glan-Thompson-Polarisationsprismen
-
-\section{Verzögerungsplatten}
-TODO: Lambda-Halbe Plätchen, Zusammengesetzte Verzögerungsplatten, Babinet-Soleil-Kompensator
-
-\section{Drehwinkelaufnehmer}
-TODO: Funktionsweise
 
 \chapter{Durchführung}
 %% SKIZZEN für jeden Durchführungsschritt, genaue Beschreibung aller Einstellungen am Versuchsaufbaue (insbesondere bei änderungen gegenüber vorherigen aufbauten)
