@@ -23,6 +23,9 @@
 
 \usepackage[verbose]{placeins}
 
+%wegen Grafikverschiebung hinzugefügt
+\usepackage{float}
+
 %\usepackage{graphicx}
 %\usepackage{caption}
 \usepackage{subcaption} %Für subfigures
@@ -102,11 +105,10 @@ $S_0=P_{0} + P_{90}=E_{0x}^2 + E_{0y}^2,$\vspace{\baselineskip}
 
 $S_1=P_{0} - P_{90}=E_{0x}^2 - E_{0y}^2,$\vspace{\baselineskip}
 
-$S_2=P_{45} - P_{135}=2E_{0x} \dcot E_{0y} \cdot cos(\delta),$\vspace{\baselineskip}
+$S_2=P_{45} - P_{135}=2E_{0x} E_{0y} \cdot cos(\delta),$\vspace{\baselineskip}
  
-$S_3=P_{rechts} - P_{links}=2E_{0x} \dcot E_{0y} \cdot sin(\delta)$\vspace{\baselineskip}
+$S_3=P_{rechts} - P_{links}=2E_{0x} E_{0y} \cdot sin(\delta)$\vspace{\baselineskip}
 \end{center}
-
 
 
 Das Heißt $S_0$ gibt die Gesamtintensität an, während $S_1$ den in x- oder y- Richtung linar polarisierten Anteil angibt, $S_2$ den Anteil zur x- oder y Achse um 45° Grad verdreht und $S_3$ den rechts- beziehungsweise links zirkular polarisierten Anteil. Wir schreiben die Parameter als Spaktenvektor, den sogenannten Stokes-Vektor $S$, da es sich herausgestellt hat, dass aus einzelnen Stokes-Vektoren durch vektorielle Addition sinnvolle resultierende Stokes-Vektoren ergeben, auch wenn der Stokes-Vektor im streng mathematischen Sinn kein Vektor ist.
@@ -170,7 +172,7 @@ Beiden Lichtquellen ist gemeinsam, dass sie keine stabile Polarisation besitzen,
 Wie oben beschrieben, lassen sich mit Stokes Vektoren $\vec{S}= (S_0, S_1, S_2, S_3)^T$ resultierende Polarisationszustände berechnen. Das legt nahe, dass man auch Matrizen auf diese Vektoren anwenden darf. Man kann in der Tat optischen Bauteilen sog. Müller-Matrizen zuordnen, die als Transformationsmatrizen für die Stokes Vektoren dienen. Ist ein einfallender Lichtstrahl durch den Stokes-Vektor $S$ charakterisiert und ein optisches Bauteil durch die Müller-Matrix $M$, so ergibt sich der austretende Lichtstrahl zu $S' = M \cdot S$ 
 
 \section{Drehwinkelaufnehmer}
-Um den Drehwinkel des $\frac{\lambda}{4}$-Plättchens kontrollieren zu können bzw. Kennlinien über dem Drehwinkel aufnehmen zu können, steht uns ein Drehwinkelaufnehmer, in den ein $\frac{\lambda}{4}$-Plättchen eingebaut ist, zur Verfügung. Damit ist es uns möglich, den Winkel in Schritten von 5 Grad aufzunehmen, da auf der Oberfläche des Drehwinkelaufnehmers stark und schwach reflektierende Beschichtungen abwechselnd (in 5 Grad Unterteilung) aufgebracht sind, die von einer Reflexionslichtschranke als Signal verarbeitet werden. Die verwendete Software nimmt automatisch einen Leistungswert vom Detektor auf, sobald ein Signal der Lichtschranke vorliegt. 
+Um die Winkelposition eines $\frac{\lambda}{4}$-Plättchens oder eines Polarisators kontrollieren zu können bzw. Kennlinien über dem Drehwinkel aufnehmen zu können, stehen uns Drehwinkelaufnehmer, in die jeweils ein $\frac{\lambda}{4}$-Plättchen und ein Polarisator eingebaut ist, zur Verfügung. Damit ist es uns möglich, den Winkel in Schritten von 5 Grad aufzunehmen, da auf der Oberfläche des Drehwinkelaufnehmers stark und schwach reflektierende Beschichtungen abwechselnd (in 5 Grad Unterteilung) aufgebracht sind, die von einer Reflexionslichtschranke als Signal verarbeitet werden. Die verwendete Software nimmt automatisch einen Leistungswert vom Detektor auf, sobald ein Signal der Lichtschranke vorliegt. 
 
 
 \section{Gefahren durch Laserstrahlung und Vorsichtsmaßnahmen}
@@ -233,7 +235,7 @@ Anschließend wurde einer der Polarisatoren so lange gedreht, bis die aufgenomme
 	\end{tabular}
 \end{center}
 \section{Bestimmung der wellenlängenaufgelösten Verzögerung des achromatischen Verzögerungsplättchens}
-Im Abschnitt 2.4 wurde bereits das $\frac{\lambda}{4}$-Plättchen beschrieben. Tatsächlich beträgt die Phasenverschiebung nicht immer genau $\frac{\pi}{2}$, sondern ist wellenlängenabhängig. Diese Abhängigkeit soll nun untersucht werden. Zu diesem Zweck steht uns ein Babinet-Soleil-Kompensator (im Folgen als BSK bezeichnet) zur Verfügung. Es handelt sich dabei grundsätzlich um ein verstellbares zusammengesetztes Verzögerungsplättchen nullter Ordnung, d.h. wie auch bei den verwendeten $\frac{\lambda}{4}$-Plättchen liegen zwei doppelbrechende Materialien derart aufeinander, dass die optischen Achsen senkrecht zueinander sind. Jedoch besteht beim BSK eine der Platten aus zwei Keilen, die per Stellschraube gegeneinander verschoben werden können, wodurch sich die Dickendifferenz und somit die Phasenverschiebung ändert. Da Leistungsminima am einfachsten gemessen werden können, fügen wir den BSK  zwischen beide Polarisatoren ein, die wir vorher senkrecht zueinander ausgerichtet haben (immer in Bezug auf die optischen Achsen) und richten ihn so aus, dass immernoch ein Minimum gemessen wird. Nun verdrehen wir ihn um 45 Grad und justieren die Dicke solange nach, bis drei nebeneinanderliegende Minima gemessen werden können. Diese Messungen führen wir mit verschiedenen Farbfiltern durch, jeweils bei 488nm, 543,5nm, 633nm und 694,3nm, um eine Referenz zu finden. Folgende Werte lesen wir am BSK ab, wobei wir den Fehler mit 0,06 abschätzen: 
+Im Abschnitt 2.4 wurde bereits das $\frac{\lambda}{4}$-Plättchen beschrieben. Tatsächlich beträgt die Phasenverschiebung nicht immer genau $\frac{\pi}{2}$, sondern ist wellenlängenabhängig. Diese Abhängigkeit soll nun untersucht werden. Zu diesem Zweck steht uns ein Babinet-Soleil-Kompensator (im Folgen als BSK bezeichnet) zur Verfügung. Es handelt sich dabei grundsätzlich um ein verstellbares zusammengesetztes Verzögerungsplättchen nullter Ordnung, d.h. wie auch bei den verwendeten $\frac{\lambda}{4}$-Plättchen liegen zwei doppelbrechende Materialien derart aufeinander, dass die optischen Achsen senkrecht zueinander sind. Jedoch besteht beim BSK eine der Platten aus zwei Keilen, die per Stellschraube gegeneinander verschoben werden können, wodurch sich die Dickendifferenz und somit die Phasenverschiebung ändert. Da Leistungsminima am einfachsten gemessen werden können, fügen wir den BSK  zwischen beide Polarisatoren ein, die wir vorher senkrecht zueinander ausgerichtet haben (immer in Bezug auf die optischen Achsen) und richten ihn so aus, dass immernoch ein Minimum gemessen wird. Nun verdrehen wir ihn um 45 Grad und justieren die Dicke solange nach, bis drei nebeneinanderliegende Minima gemessen werden können. Diese Messungen führen wir mit verschiedenen Farbfiltern durch, jeweils bei 488nm, 543,5nm, 633nm und 694,3nm, um eine Referenz zu finden. Bei den verwendeten Farbfiltern handelt es sich um Interferenzfilter, d.h. sie bestehen aus vielen Schichten, die sich in Brechungsindex und Dicke unterscheiden. Das einfallende Licht wird in den jeweiligen Schichten teilweise reflektiert und transmittiert und durch konstruktive und destruktive Interferenz wird erreicht, dass insgesamt lediglich ein schmaler Wellenlängenbereich transmittiert wird. Folgende Werte lesen wir am BSK ab, wobei wir den Fehler mit 0,06 abschätzen: 
 
 \begin{center}
   \begin{tabular}{|c|c|c|c|}
@@ -257,19 +259,19 @@ Anschließend wird das $\frac{\lambda}{4}$-Plättchen in den Strahlengang hinter
 	\end{tabular}
 \end{center}
 
-Die Differenzen der am BSK eingestellten Werte mit und ohne  $\frac{\lambda}{4}$-Plättchen ergeben die Phasenverzögerung, wobei wir noch auf ganze Wellenlängen skalieren müssen, d.h. durch $2\pi$ dividieren (dies liefert $\delta$ in Anteilen der ganzen Wellenlängen) bzw. mit $\frac{360^\circ}{2\pi}}$ multiplizieren (damit berechnen wir die Phasenverschiebung im Gradmaß). Die Phasenverschiebungen in Anteilen der ganzen Wellenlängen sind also: 
+Die Differenzen der am BSK eingestellten Werte mit und ohne  $\frac{\lambda}{4}$-Plättchen ergeben die Phasenverzögerung, wobei wir noch auf ganze Wellenlängen skalieren müssen, d.h. durch 2 dividieren (dies liefert $\delta$ im Bogenmaß) bzw. mit $\frac{360^\circ}{4\pi}$ multiplizieren (damit berechnen wir die Phasenverschiebung im Gradmaß). Die Phasenverschiebungen sind also: 
 
 \begin{center}
   \begin{tabular}{|c|c|c|c|}
     \hline
         Filter 1 (488nm) & Filter 2 (543,5nm) & Filter 3 (633nm) & Filter 4 (694,3nm) \\ \hline
-        0,468 & 0,524 & 0,589 & 0,643 \\ \hline
-        0,455 & 0,519 & 0,595 & 0,640 \\ \hline
-        0,466 & 0,522 & 0,603 & 0,635 \\ \hline
+        0,468 $\pi$ & 0,524 $\pi$ & 0,589 $\pi$ & 0,643 $\pi$ \\ \hline
+        0,455 $\pi$ & 0,519 $\pi$ & 0,595 $\pi$ & 0,640 $\pi$ \\ \hline
+        0,466 $\pi$ & 0,522 $\pi$ & 0,603 $\pi$ & 0,635 $\pi$ \\ \hline
 	\end{tabular}
 \end{center}
 
-Das Messen dreier Werte ist sinnvoll, um eine größere Genauigkeit zu erreichen. Nach Mittelwertbildung und Umrechnung auf das Gradmaß ergibt sich eine Verteilung gemäß folgender Grafik:
+Das Messen jeweils dreier Werte ist sinnvoll, um eine größere Genauigkeit zu erreichen. Nach Mittelwertbildung und Umrechnung auf das Gradmaß ergibt sich eine Verteilung gemäß folgender Grafik:
 
 \begin{center}
 \begin{figure}[h]
@@ -284,25 +286,152 @@ Das Messen dreier Werte ist sinnvoll, um eine größere Genauigkeit zu erreichen
     xmin=450,
     xmax=730,
     grid=both,
-    ymin=150,
-    ymax=250,
+    ymin=75,
+    ymax=125,
     tick align=outside,
     tickpos=left,
     minor x tick num=3,
     minor y tick num=4,
     minor grid style={dotted,thin}
 ]
-\addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y fixed = 3,44, x dir=both, x fixed = 5]
+\addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y fixed = 3,44, x dir=both, x fixed = 6]
 table[x index={0},y index={1}] {data/delta.txt};
 %\addlegendentry{}
 \end{axis}
 \end{tikzpicture}
-\captionof{figure}{Wellenlängenabhängige Phasenverschiebung des Verzögerungsplättchens. Der Fehler der Wellenlänge ist 5nm (Quelle: Datenblatt), den Fehler der abgelesenen Werte am BSK haben wir mit 0,06 abgeschätzt, was einem Fehler der Phasenverschiebung von 3,44 entspricht.}
+\captionof{figure}{Wellenlängenabhängige Phasenverschiebung des Verzögerungsplättchens. Der Fehler der Wellenlänge kann mit 6nm angenommen werden, da die Halbwertsbreite 10 $\pm 2$ beträgt (Quelle: Datenblatt), den Fehler der abgelesenen Werte am BSK haben wir mit 0,06 abgeschätzt, was einem Fehler der Phasenverschiebung von 1,72$^\circ$ entspricht.}
 \end{figure}
 \end{center}
 
 \section{Charakterisierung des Polarisationszustandes mit Hilfe des Stokes-Formalismus}
-TODO: Skizze/Aufbau, Einstellungen, aufgenommene Daten, wie wurden die verschiedenen Polarisationen hergestellt?
+
+Zur Herstellung linearer Polarisation stehen uns die bekannten Glan-Thomson-Polarisationsprismen zur Verfügung. Um daraus zirkular polarisiertes Licht zu erzeugen, bedienen wir uns des $\frac{\lambda}{4}$-Plättchens, dessen Verzögerung wir im vorigen Abschnitt für die jeweiligen Wellenlängen genau bestimmt haben. Im Folgenden werden alle Messungen mit Filter 4 (694,3nm) durchgeführt, d.h. $\delta = (0,639 \pm 9,556 \cdot 10^{-3}) \pi$. Zunächst messen wir ohne $\frac{\lambda}{4}$-Plättchen, richten den 1. Linearpolarisator in y-Richtung aus und nehmen die Leistung über der Winkelposition des zweiten Polarisators auf (wir verwenden also lediglich den Drehwinkelaufnehmer mit Linearpolarisator, der restliche Aufbau bleibt unangetastet). Wir erhalten folgende Verteilung:
+
+\begin{center}
+\begin{figure}[H]
+\begin{tikzpicture}
+\begin{axis}[
+    legend pos=south west,
+    title={Lichtleistung über dem Drehwinkel},
+    xlabel=Drehwinkel in Grad,
+    ylabel=Lichtleistung in W,
+    width=0.9\textwidth,
+    height= 9cm,
+    xmin=0,
+    xmax=360,
+    grid=both,
+    ymin=0,
+    ymax=0.000007,
+    tick align=outside,
+    tickpos=left,
+    minor x tick num=3,
+    minor y tick num=4,
+    minor grid style={dotted,thin}
+]
+\addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y fixed relative = 0.01, x dir=both, x fixed = 0]
+table[x index={0},y index={1}] {data/d-lin-y.txt};
+\addlegendentry{ohne $\frac{\lambda}{4}$-Plättchen}
+\end{axis}
+\end{tikzpicture}
+\captionof{figure}{Linear in y-Richtung polarisiertes Licht}
+\end{figure}
+\end{center}
+
+Nun wird der Drehwinkelaufnehmer mit $\frac{\lambda}{4}$-Plättchen vor den letzten Polarisator montiert, der 1. Polarisator um 45$^\circ$ gedreht und nun die Lichtleistung über der Winkelposition des $\frac{\lambda}{4}$-Plättchens aufgenommen. 
+
+\begin{center}
+\begin{figure}[H]
+\begin{tikzpicture}
+\begin{axis}[
+    legend pos=south west,
+    title={Lichtleistung über dem Drehwinkel},
+    xlabel=Drehwinkel in Grad,
+    ylabel=Lichtleistung in W,
+    width=0.9\textwidth,
+    height= 9cm,
+    xmin=0,
+    xmax=360,
+    grid=both,
+    ymin=0,
+    ymax=0.00001,
+    tick align=outside,
+    tickpos=left,
+    minor x tick num=3,
+    minor y tick num=4,
+    minor grid style={dotted,thin}
+]
+\addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y fixed relative = 0.01, x dir=both, x fixed = 0]
+table[x index={0},y index={1}] {data/d-45.txt};
+\addlegendentry{mit $\frac{\lambda}{4}$-Plättchen}
+\end{axis}
+\end{tikzpicture}
+\captionof{figure}{+45 Grad}
+\end{figure}
+\end{center}
+
+Zusätzlich steht uns eine 3D-Kinobrille zur Verfügung, deren optische Eigenschaften genauer untersucht werden sollen. Dazu montieren wir sie auf den Reiter zwischen Linse und Drehwinkelaufnehmer, zunächst so, dass das Licht der LED von innen auf das Brillenglas fällt, das Licht also in Blickrichtung des Brillenträgers propagiert. Wir messen wieder die Lichtleistung über der Winkelposition des Linearpolarisators. 
+
+\begin{center}
+\begin{figure}[H]
+\begin{tikzpicture}
+\begin{axis}[
+    legend pos=south west,
+    title={Lichtleistung über dem Drehwinkel},
+    xlabel=Drehwinkel in Grad,
+    ylabel=Lichtleistung in W,
+    width=0.9\textwidth,
+    height= 8cm,
+    xmin=0,
+    xmax=360,
+    grid=both,
+    ymin=0,
+    ymax=0.000016,
+    tick align=outside,
+    tickpos=left,
+    minor x tick num=3,
+    minor y tick num=4,
+    minor grid style={dotted,thin}
+]
+\addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y fixed relative = 0.01, x dir=both, x fixed = 0]
+table[x index={0},y index={1}] {data/d-brille-1-licht in sichtrichtung.txt};
+%\addlegendentry{}
+\end{axis}
+\end{tikzpicture}
+\captionof{figure}{3D-Kinobrille, Lichtbestrahlung in Blickrichtung des Brillenträgers}
+\end{figure}
+\end{center}
+
+Nun wiederholen wir dieselbe Messung, jedoch drehen wir die Brille um, so dass das Licht in entgegengesetzer Richtung auf das Brillenglas fällt (entgegen der Blickrichtung des Brillenträgers).
+
+\begin{center}
+\begin{figure}[H]
+\begin{tikzpicture}
+\begin{axis}[
+    legend pos=south west,
+    title={Lichtleistung über dem Drehwinkel},
+    xlabel=Drehwinkel in Grad,
+    ylabel=Lichtleistung in W,
+    width=0.9\textwidth,
+    height= 8cm,
+    xmin=0,
+    xmax=360,
+    grid=both,
+    ymin=0,
+    ymax=0.000016,
+    tick align=outside,
+    tickpos=left,
+    minor x tick num=3,
+    minor y tick num=4,
+    minor grid style={dotted,thin}
+]
+\addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y fixed relative = 0.01, x dir=both, x fixed = 0]
+table[x index={0},y index={1}] {data/d-brille-2.txt};
+%\addlegendentry{}
+\end{axis}
+\end{tikzpicture}
+\captionof{figure}{3D-Kinobrille, Lichtbestrahlung gegen Blickrichtung des Brillenträgers}
+\end{figure}
+\end{center}
 
 \section{P-I-Kennlinie der VCSEL}
 TODO: Skizze/Aufbau, Einstellungen, aufgneommene Daten, anmerkung: wurde nach aufgabenteil f gemacht, Leistungsgrenze von 12mA vorgegeben
