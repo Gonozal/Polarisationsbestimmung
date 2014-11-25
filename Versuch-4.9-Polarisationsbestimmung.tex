@@ -12,6 +12,8 @@
 \usepackage[ngerman]{hyperref}
 % Paket für Fußnoten
 \usepackage[stable]{footmisc}
+% Paket für amsmath (aligned mathe formeln)
+\usepackage{amsmath}
 % Paket für Bibliotheks-Verzeichnis, square: Verwende eckige statt runde klammern
 % \usepackage[square]{natbib}
 % Paket zum Plotten von Datensätzen
@@ -92,7 +94,6 @@ In diesem Versuch wird Licht verschiedener Polarisationszustände hergestellt un
 \chapter{Grundlagen}
 \section{Polarisation}
 
-
 Bei unpolarisiertem Licht, beispielsweise dem Licht der Sonne oder eine Glühlampe, existiert keine feste Beziehung zwischen den Feldkomponenten $E_x$ und $E_y$ bezüglich der Phasenverschiebung $\delta$ und der Beträge $E_{i}$. Schwingt der Feldvektor in einer Ebene, das heißt gilt $\delta=0$, liegt lineare Polarisation vor. Rotiert der Feldvektor um die z-Achse, liegen eine Phasenverschiebung $\delta=\frac{\pi}{2}$ und $E_{x}=E_{y}$ zu Grunde und man spricht von zirkular polarisiertem Licht. Falls $\delta$ einen anderen, jedoch festen Wert annimmt und $E_{x}\neq E_{y}$ gilt, ist die Polarisation elliptisch. 
 
 
@@ -100,16 +101,12 @@ Bei unpolarisiertem Licht, beispielsweise dem Licht der Sonne oder eine Glühlam
 
 Mittels des sogenannten Stokes-Formalismus wird es möglich, Mischformen der Polarisationszustände zu klassifizieren und auch den Grad der Polarisation zu bestimmen. Dazu werden die vier Stokes-Parameter wie folgt definiert:
 
-\begin{center}
-$S_0=P_{0} + P_{90}=E_{0x}^2 + E_{0y}^2,$\vspace{\baselineskip}
-
-$S_1=P_{0} - P_{90}=E_{0x}^2 - E_{0y}^2,$\vspace{\baselineskip}
-
-$S_2=P_{45} - P_{135}=2E_{0x} E_{0y} \cdot cos(\delta),$\vspace{\baselineskip}
- 
-$S_3=P_{rechts} - P_{links}=2E_{0x} E_{0y} \cdot sin(\delta)$\vspace{\baselineskip}
-\end{center}
-
+\begin{align*}
+  S_0 &= P_{0} + P_{90} = E_{0x}^2 + E_{0y}^2,\\
+  S_1 &= P_{0} - P_{90} = E_{0x}^2 - E_{0y}^2,\\
+  S_2 &= P_{45} - P_{135} = 2E_{0x} \cdot E_{0y} \cdot cos(\delta),\\
+  S_3 &= P_{rechts} - P_{links} = 2E_{0x} \cdot E_{0y} \cdot sin(\delta)
+\end{align*}
 
 Das Heißt $S_0$ gibt die Gesamtintensität an, während $S_1$ den in x- oder y- Richtung linar polarisierten Anteil angibt, $S_2$ den Anteil zur x- oder y Achse um 45° Grad verdreht und $S_3$ den rechts- beziehungsweise links zirkular polarisierten Anteil. Wir schreiben die Parameter als Spaktenvektor, den sogenannten Stokes-Vektor $S$, da es sich herausgestellt hat, dass aus einzelnen Stokes-Vektoren durch vektorielle Addition sinnvolle resultierende Stokes-Vektoren ergeben, auch wenn der Stokes-Vektor im streng mathematischen Sinn kein Vektor ist.
 Es geht also bei diesem Versuch im Wesentlichen darum, für verschiedene Lichtquellen unbekannter Polarisation die entsprechenden Stokes-Vektoren zu berechnen und somit die Polarisation zu bestimmen. Dazu ist es nötig, sich zunächst mit den verwendeten Lichtquellen und der Erzeugung von Polarisation zu befassen. Im Versuch werden eine weiße LED und ein oberflächenemittierender Halbleiterlaser als Lichtquelle verwendet. 
@@ -119,54 +116,10 @@ Es geht also bei diesem Versuch im Wesentlichen darum, für verschiedene Lichtqu
 
 Beide Lichtquellen senden Licht nach dem Prinzip von p-n-Übergängen aus, das heißt ein p-dotierter Halbleiter, dessen Ladungsträger "Löcher" sind und ein n-dotierter Halbleiter, dessen Ladungsträger Elektronen sind, stehen in Kontakt, wodurch sich eine sog. Verarmungs- bzw. Raumladungszone ausbildet, das heißt an der Kontaktstelle rekombinieren Elektronen und Löcher derart, dass sich die Fermi-Energien der beiden Materialien angleichen. Nun wird eine Spannung von außen in Durchlassrichtung angelegt, wodurch zusätzliche Elektronen in die n-dotierte Schicht eingebracht werden und zur Verarmungszone wandern, wo sie mit Löchern der p-dotierten Schicht rekombinieren und dabei Energie in Form von Licht freisetzen. Die Wellenlänge ist durch die Größe der Bandlücke bestimmt, da der Energiebetrag der Größe der Bandlücke entspricht. Das heißt derartige Lichtquellen senden im Wesentlichen monochromatisches Licht aus und um die besagte weiße LED realisieren zu können, müssen entweder mehrere Halbleiderdioden verschiedener Farben kombiniert werden oder Lumineszenzfarbstoffe auf eine blaue LED aufgebracht werden. Ein weiterer Unterschied zwischen der weißen LED und dem Laser ist der optische Resonator, den nur der Laser besitzt. Im Falle des oberflächenemittierenden Lasers ist der Resonator vertikal ausgerichtet und besteht aus zwei DBR-Spiegeln (engl.: Distributed Bragg Reflectors), zwischen denen konstruktive Interferenz stattfindet. Der Resonator ist extrem kurz (in der Größenordnung einer Wellenlänge), wodurch die Besetzungsinversion, die für das Laserprinzip erforderlich ist, bereits bei einem sehr niedrigem Schwellstrom entsteht.
 
-%% Verhindert, dass irgend etwas, das VOR der floatbarrier steht hinter content dargestellt wird, der danach steht
-%% Sehr nützlich für bilder und graphen
-
-%% Beispiel für einen Graphen
-% \begin{figure}[h]
-% \centering
-%                 \begin{tikzpicture}
-% 								\begin{axis}[
-% 								title={Stabilitätsdiagramm},
-% 								xmin=-4,
-% 								xmax=4,
-% 								ymin=-4,
-% 								ymax=4,
-% 								axis y line=center,
-% 								axis x line=center,
-% 								%restrict y to domain=-20:20,
-% 								samples=100,
-% 								xlabel=$g_1$,
-% 								ylabel=$g_2$,
-% 								]
-% 								
-% 								
-% 								\addplot[fill,opacity=0.3,cyan,domain=-5:5,smooth] % smooth breaks \closedcycle
-%   {1/x} \closedcycle;
-% 								\addplot[smooth, dashed, domain=-5:5] {x};
-% 								
-% 								\end{axis}
-% 								\end{tikzpicture}
-% 	\caption{
-% 		Der blau unterlegte Bereich ist stabil. Auf der diagonalen Linie liegen alle symmetrischen Resonatoren. 
-% 	}
-% \end{figure}
-
-
 \section{Polarisatoren und $\frac{\lambda}{4}$-Plättchen}
 Beiden Lichtquellen ist gemeinsam, dass sie keine stabile Polarisation besitzen, das heißt diese muss im Versuch selbst hergestellt werden. Zu diesem Zweck bedienen wir uns des Prinzips der Doppelbrechung. Dabei wird Licht, wenn es auf ein doppelbrechendes Material trifft, in zwei Teilstrahlen aufgespalten, für die unterschiedliche Brechungsindizes gelten. Man unterscheidet den ordentlichen Strahl, dessen Polarisation linear und senkrecht zur optischen Achse des Materials (i.d.R. ein Kristall wie z.B. Calcit) ist und der dem Snellius'schen Brechungsgesetz genügt, und den außerordentlichen Strahl, der parallel zur optischen Achse polarisiert ist und dessen Brechungsindex von der Ausbreitungsrichtung relativ zur optischen Achse abhängt. Das Heißt auf diese Weise können wir linear polarisiertes Licht erzeugen. Im Speziellen arbeiten wir mit Glan-Thomson-Polarisationsprismen, die aus zwei Prismen aus doppelbrechendem Material derart zu einen Quader verbunden sind, dass die opische Achse parallel zur Eintrittsfläche liegt und der ordentliche Strahl an der schrägen Verbindungsfläche beider Prismen total reflektiert wird. Der außerordentliche Strahl tritt ohne Ablenkung wieder aus und ist nun linear polarisiert.
 
-\vspace{\baselineskip}Um zirkular polarisiertes Licht zu erzeugen, wird linear polarisiertes Licht auf ein $\frac{\lambda}{4}$-Plättchen gestrahlt. Dieses besteht wieder aus einem doppelbrechenden Material, dessen optische Achse senkrecht zur Ausbreitungsrichtung steht. Beide Teilstrahlen, ordentlicher und außerordentlicher Strahl treten in gleicher Richtung wieder aus, jedoch mit einer Phasendifferenz von $\frac{\pi}{2}$, das heißt es entsteht zirkular polarisiertes Licht. Im Versuch werden sog. zusammengesetzte $\frac{\lambda}{4}$-Plättchen nullter Ordnung verwendet, das heißt das Licht strahlt durch zwei doppelbrechende Materialen, deren optische Achsen senkrecht zueinander ausgerichtet sind. Die Phasenverschiebung kommt nicht durch die Gesamtdicke des Plättchens zustande, sondern durch die Dickendifferenz der beiden Bestandteile. Dieser Trick ist notwendig, da sich solch geringe Dicken, wie sie für Licht notwendig wären, nicht ohne weiteres herstellen und händeln lassen.
-
-%% Beispiel für das Einbinden von bildern
-% \begin{figure}[ht!]
-% \centering
-% \includegraphics[width=65mm]{img/5074.png}
-% \caption{Energieschema eines HeNe-Lasers}
-% \label{HeNeLaser}
-% \cite{HeNeNiveaus}
-% \end{figure}
-
+\vspace{\baselineskip}Um zirkular polarisiertes Licht zu erzeugen, wird linear polarisiertes Licht auf ein $\frac{\lambda}{4}$-Plättchen gestrahlt. Dieses besteht wieder aus einem doppelbrechenden Material, dessen optische Achse senkrecht zur Ausbreitungsrichtung steht. Beide Teilstrahlen, ordentlicher und außerordentlicher Strahl treten in gleicher Richtung wieder aus, jedoch mit einer Phasendifferenz von $\frac{\pi}{2}$, das heißt es entsteht zirkular polarisiertes Licht. Im Versuch werden sogenannte zusammengesetzte $\frac{\lambda}{4}$-Plättchen nullter Ordnung verwendet, das heißt das Licht strahlt durch zwei doppelbrechende Materialen, deren optische Achsen senkrecht zueinander ausgerichtet sind. Die Phasenverschiebung kommt nicht durch die Gesamtdicke des Plättchens zustande, sondern durch die Dickendifferenz der beiden Bestandteile. Dieser Trick ist notwendig, da sich solch geringe Dicken, wie sie für Licht notwendig wären, nicht ohne weiteres herstellen und händeln lassen.
 
 \section{Müller-Matrix-Formalismus}
 Wie oben beschrieben, lassen sich mit Stokes Vektoren $\vec{S}= (S_0, S_1, S_2, S_3)^T$ resultierende Polarisationszustände berechnen. Das legt nahe, dass man auch Matrizen auf diese Vektoren anwenden darf. Man kann in der Tat optischen Bauteilen sog. Müller-Matrizen zuordnen, die als Transformationsmatrizen für die Stokes Vektoren dienen. Ist ein einfallender Lichtstrahl durch den Stokes-Vektor $S$ charakterisiert und ein optisches Bauteil durch die Müller-Matrix $M$, so ergibt sich der austretende Lichtstrahl zu $S' = M \cdot S$ 
@@ -187,9 +140,14 @@ Abgesehen von den genannte Personenschäden sind bei nicht sachgemäßer Handlun
 
 \chapter{Durchführung}
 \section{Aufnahme der P-I-Kennlinie der LED}
-\label{sec:p-i-kennlinie}
+\label{sec:pikennlinie}
 Zuerst nehmen wir eine P-I-Kennlinie der weißen LED auf. Das heißt, wir messen die abgestrahlte Lichtleistung über dem Strom. Da die LED in einem sehr großen Winkel abstrahlt, verwenden wir hierfür zwei Linsen, um eine Kollimation zu erreichen. Unser Aufbau besteht hierbei aus der LED, den beiden Linsen und dem Detektor, die in dieser Reihenfolge auf einem Reiter montiert werden.
-
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=150mm]{img/skizzen/versuch_a.jpg}
+\caption{Versuchsaufbau zur Bestiimung der P-I-Kennlinie der LED}
+\label{PI-Kennlinie-LED}
+\end{figure}
 \begin{center}
 \begin{figure}[h]
 \begin{tikzpicture}
@@ -223,17 +181,37 @@ table[x index={0},y index={1}] {data/1.txt};
 Als Fehler für die Stromstärke wurden 0.05mA angenommen, da die Stromquelle nur eine Nachkommastelle anzeigte. Dagegen wurde als Fehler für die aufgenommene Leistung 1 Prozent angenommen. Zwar ist das verwendete Messgerät deutlich genauer, allerdings wurden dennoch offensichtliche Schwankungen in der gemessenen Leistung beobachtet, welche entweder durch den im Raum verwendeten Monitor oder durch eine nicht konstante Leistung der LED verursacht wurden.
 
 \section{Auslöschungsverhältniss der Linearpolarisatoren}
-Zur Bestimmung des Auslöschungsverhältnisses der Linearpolarisatoren wurden in den Aufbau aus Abschnitt \ref{sec:p-i-kennlinie} noch 2 Linearpolarisatoren eingefügt.
+Zur Bestimmung des Auslöschungsverhältnisses der Linearpolarisatoren wurden in den Aufbau aus Abschnitt~\ref{sec:pikennlinie} noch 2 Linearpolarisatoren eingefügt.
 Anschließend wurde einer der Polarisatoren so lange gedreht, bis die aufgenommene Leistung ein Minimum erreicht hat, die Polarisationsachsen der Polarisatoren also um 90° zueinander verdreht waren. Danach wurde der vordere Linearpolarisator um 90° gedreht und es wurde erneut die gemessene Leistung augenommen.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=150mm]{img/skizzen/versuch_b.jpg}
+\caption{Versuchsaufbau zur Bestimmung des Auslöschungsverhältnisses der Linearpolarisatoren}
+\label{Auslöschungsverhältniss-Linearpolarisatoren}
+\end{figure}
 
 \begin{center}
   \begin{tabular}{|p{5cm}|p{4cm}|p{4.5cm}|}
     \hline
-        Winkel zwischen den Polarisationsachsen in Grad & Leistung in W & Fehler der Leistung in W \\ \hline
-        90 & $6,75 \cdot 10^-9$ & $0,05 \cdot 10^-4$ \\ \hline
-        90 & $5,111 \cdot 10^-4$ & $0,05 \cdot 10^-9$ \\ \hline
+        Winkel $\alpha$ zwischen den Polarisationsachsen in Grad & Leistung P in W & Fehler $\Delta$P der Leistung in W \\ \hline
+        90 & $6,75 \cdot 10^-9$ & $0,05 \cdot 10^-9$ \\ \hline
+        0 & $5,111 \cdot 10^-4$ & $0,05 \cdot 10^-4$ \\ \hline
 	\end{tabular}
 \end{center}
+
+Daraus lässt sich das Auslöschungsverhätlniss inklusive Fehler mit
+
+\begin{align*}
+  \frac{P_{min}}{P_{max}} &= \frac{6,75*10^{-9} W}{5,111*10^{-4} W} = 1,321*10^{-5} \\
+  \Delta\frac{P_{min}}{P_{max}} &= \sqrt{\left(\frac{\Delta P_{min}}{P_{max}}\right)^2 + \left(\Delta P_{max} \cdot \frac{P_{min}}{P_{max}^2}\right)^2} = 1,62 * 10^{-7}
+\end{align*}
+
+Somit ist 
+\begin{align*}
+\frac{P_{min}}{P_{max}} =\left(1,321\pm0,016\right) \cdot 10^{-5}
+\end{align*}
+
 \section{Bestimmung der wellenlängenaufgelösten Verzögerung des achromatischen Verzögerungsplättchens}
 Im Abschnitt 2.4 wurde bereits das $\frac{\lambda}{4}$-Plättchen beschrieben. Tatsächlich beträgt die Phasenverschiebung nicht immer genau $\frac{\pi}{2}$, sondern ist wellenlängenabhängig. Diese Abhängigkeit soll nun untersucht werden. Zu diesem Zweck steht uns ein Babinet-Soleil-Kompensator (im Folgen als BSK bezeichnet) zur Verfügung. Es handelt sich dabei grundsätzlich um ein verstellbares zusammengesetztes Verzögerungsplättchen nullter Ordnung, d.h. wie auch bei den verwendeten $\frac{\lambda}{4}$-Plättchen liegen zwei doppelbrechende Materialien derart aufeinander, dass die optischen Achsen senkrecht zueinander sind. Jedoch besteht beim BSK eine der Platten aus zwei Keilen, die per Stellschraube gegeneinander verschoben werden können, wodurch sich die Dickendifferenz und somit die Phasenverschiebung ändert. Da Leistungsminima am einfachsten gemessen werden können, fügen wir den BSK  zwischen beide Polarisatoren ein, die wir vorher senkrecht zueinander ausgerichtet haben (immer in Bezug auf die optischen Achsen) und richten ihn so aus, dass immernoch ein Minimum gemessen wird. Nun verdrehen wir ihn um 45 Grad und justieren die Dicke solange nach, bis drei nebeneinanderliegende Minima gemessen werden können. Diese Messungen führen wir mit verschiedenen Farbfiltern durch, jeweils bei 488nm, 543,5nm, 633nm und 694,3nm, um eine Referenz zu finden. Bei den verwendeten Farbfiltern handelt es sich um Interferenzfilter, d.h. sie bestehen aus vielen Schichten, die sich in Brechungsindex und Dicke unterscheiden. Das einfallende Licht wird in den jeweiligen Schichten teilweise reflektiert und transmittiert und durch konstruktive und destruktive Interferenz wird erreicht, dass insgesamt lediglich ein schmaler Wellenlängenbereich transmittiert wird. Folgende Werte lesen wir am BSK ab, wobei wir den Fehler mit 0,06 abschätzen: 
 
