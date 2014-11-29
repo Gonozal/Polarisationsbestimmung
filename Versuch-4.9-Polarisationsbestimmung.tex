@@ -195,6 +195,8 @@ table[x index={0},y index={1}] {data/1.txt};
 
 Als Fehler für die Stromstärke wurden 0.05mA angenommen, da die Stromquelle nur eine Nachkommastelle anzeigte. Dagegen wurde als Fehler für die aufgenommene Leistung 1 Prozent angenommen. Zwar ist das verwendete Messgerät deutlich genauer, allerdings wurden dennoch offensichtliche Schwankungen in der gemessenen Leistung beobachtet, welche entweder durch den im Raum verwendeten Monitor oder durch eine nicht konstante Leistung der LED verursacht wurden.
 
+Bis etwa 20mA nimmt die Leistung der LED angenähert proportional zur angelegten Stromstärke zu, danach scheint sich die Leistung langsam einem Maximalwert anzunähern.
+
 \section{Auslöschungsverhältniss der Linearpolarisatoren}
 Zur Bestimmung des Auslöschungsverhältnisses der Linearpolarisatoren wurden in den Aufbau aus Abschnitt~\ref{sec:pikennlinie} noch 2 Linearpolarisatoren eingefügt.
 Anschließend wurde einer der Polarisatoren so lange gedreht, bis die aufgenommene Leistung ein Minimum erreicht hat, die Polarisationsachsen der Polarisatoren also um 90° zueinander verdreht waren. Danach wurde der vordere Linearpolarisator um 90° gedreht und es wurde erneut die gemessene Leistung augenommen.
@@ -614,7 +616,9 @@ TODO: Berechnung der Kalibrationsfaktoren für die einzelnen Wellenlängen, Fehl
 TODO: Berechnung der Stokes-Parameter. Wichtig: Benutzung der in Aufgabenteil d bestimmten, genaueren und von 90° abweichenden, verzögerung des $\frac{\lambda}{4}$ Plättchens. Was ergibt sich für den Aufbau der 3-D Brille?
 
 \section{P-I-Kennlinie der VCSEL}
-TODO: Folerungen für den Laserschutz, Warum kein linearer Anstieg? Fehlerbalken!
+Bis zu einer angelegten Stromstärke von etwa 3mA steigt die Leistung der VCSEL nur sehr langsam an. Dies kann dadurch erklärt werden, dass im Vergleich zu Absorption in der VCSEL die Verstärkung im Resoatur nur gering ist, also kaum oder keine Verstärkung stattfindet. Die anschließende annährend linear ansteigende Leistung verhält sich wie in einem typischen Laserresonator, wobei im Gegensatz zu makroskopischen resonatoren der Anstieg der Leistung mit zunehmender Stromstärke wieder abnimmt. Dies ist dadurch zu erklären, dass auf Grund der geringen Länge der einzelnen Resonatorschichten bereits kleine Längenänderungen im Resonator die Verstärkung negativ beinträchtigen kann.
+
+Im Bezug auf den Laserschutz macht die aufgenommene Leistung von wenigen Milliwatt das Tragen von Schutzbrillen erforderlich, besondere Vorsichtsmaßnahmen, um nicht mit dem Strahl in Kontakt zu kommen, müssen jedoch nicht getroffen werden.
 
 \section{Polarisationszustand des VCSLEs in Abhägigkeit des Stroms}
 TODO: Grad und Art der Polarisation des VCSLEs, normieren und Fehlerrechnung
