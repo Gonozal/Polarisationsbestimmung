@@ -270,7 +270,7 @@ Die Differenzen der am BSK eingestellten Werte mit und ohne  $\frac{\lambda}{4}$
 	\end{tabular}
 \end{center}
 
-Das Messen jeweils dreier Werte ist sinnvoll, um eine größere Genauigkeit zu erreichen. Nach Mittelwertbildung und Umrechnung auf das Gradmaß ergibt sich eine Verteilung gemäß folgender Grafik:
+Das Messen jeweils dreier Werte ist sinnvoll, um eine größere Genauigkeit zu erreichen. Durch das benutzen von 3 Messdaten kann der erwartete Fehler durch $\sqrt{3}$ geteilt werden. Nach Mittelwertbildung und Umrechnung auf das Gradmaß ergibt sich eine Verteilung gemäß folgender Grafik:
 
 \begin{center}
 \begin{figure}[h]
@@ -293,11 +293,11 @@ Das Messen jeweils dreier Werte ist sinnvoll, um eine größere Genauigkeit zu e
     minor y tick num=4,
     minor grid style={dotted,thin}
 ]
-\addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y fixed=1.72, x dir=both, x fixed=6.00]
+\addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y fixed=0.99, x dir=both, x fixed=6.00]
 table[x index={0}, y index={1}] {data/delta.txt};
 \end{axis}
 \end{tikzpicture}
-\captionof{figure}{Wellenlängenabhängige Phasenverschiebung des Verzögerungsplättchens. Der Fehler der Wellenlänge kann mit 6nm angenommen werden, da die Halbwertsbreite $10 \pm 2$ beträgt (Quelle: Datenblatt), den Fehler der abgelesenen Werte am BSK haben wir mit 0,06 abgeschätzt, was einem Fehler der Phasenverschiebung von 1,72$^\circ$ entspricht.}
+\captionof{figure}{Wellenlängenabhängige Phasenverschiebung des Verzögerungsplättchens. Der Fehler der Wellenlänge kann mit 6nm angenommen werden, da die Halbwertsbreite $10 \pm 2$ beträgt (Quelle: Datenblatt), den Fehler der abgelesenen Werte am BSK haben wir mit 0,06 abgeschätzt. Nach division durch $\sqrt{3}$ ergibt dies einen Fehler der Phasenverschiebung von 0,99$^\circ$.}
 \end{figure}
 \end{center}
 
