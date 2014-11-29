@@ -18,6 +18,21 @@
 % \usepackage[square]{natbib}
 % Paket zum Plotten von Datensätzen
 \usepackage{pgfplots}
+\pgfkeys{
+  /pgfplots/PolarStyle/.style={
+    ylabel=Leistung in W,
+    width=0.33\linewidth,
+    height=0.33\linewidth,
+    scale only axis,
+    grid=both,
+    tick align=outside,
+    tickpos=left,
+    minor x tick num=2,
+    minor y tick num=1
+  }
+}
+
+\usetikzlibrary{pgfplots.polar}
 % Verwende deutsche Bezeichner für Inhaltsverzeichnis, ... (ngerman = New German: neue Rechtschreibung)
 \usepackage{ngerman}
 % Deutsche Zahlen (entfernt z.B. das Leerzeichen nach einem Dezimal-Komma)
@@ -434,7 +449,7 @@ Analog zur Aufnahme der P-I-Kennlinie der LED nehmen wir ebenfalls die P-I-Kennl
     xlabel=Stromstärke in mA,
     ylabel=Leistung in W,
     width=0.9\textwidth,
-    height=9cm,
+    height= 9cm,
     xmin=0,
     xmax=13,
     grid=both,
@@ -456,8 +471,134 @@ table[x index={0},y index={1}] {data/e-P-I.txt};
 \end{center}
 
 Analog zu Abschnitt 3.1 wurde als Fehler für die Stromstärke 0.05mA und als Fehler für die aufgenommene Leistung 1 Prozent angenommen.
-\section{Polarisationszustand des VCSLEs in Abhägigkeit des Stroms}
-TODO: Skizze/Aufbau, Einstellungen, aufgneommene Daten, anmerkung: wurde vor aufgabenteil e gemacht
+
+\section{Polarisationszustand des VCSELs in Abhägigkeit des Stroms}
+VCSEL haben in der regel keine feste Polarisation, vielmehr variirt die Art und der Grad der Polarisation auf grund von thermischer Ausdehnung einzelner Komponenten mit der angelegten Stromstärke. Zur Untersuchung dieser Eigenschaft haben wir die winkelabhängige Leistung des VCSELs mit Hilfe des Drehwinkelaufnehmers bei 3.5mA, 4mA, 6mA, 8mA, 10mA und 12mA bestimmt.
+
+Dazu haben wurde der von der VCSEL emmitierte Strahl zuerst durch einen Linearpolarisator, dann durch den Drehwinkelaufnehmer und anschließend durch einen um 90° verdrehten Linearpolarisator gelenkt.
+
+\begin{figure}[h]
+\begin{tikzpicture}
+\begin{polaraxis}[
+  PolarStyle,
+  ymin=-9e-7,
+  ymax=9e-7,
+  name=first
+]
+\addplot[red, only marks, mark=x, mark size=2pt]
+table[x index=0,y index=1] {data/f-1.txt};
+\addlegendentry{1mA}
+\end{polaraxis}
+
+\begin{polaraxis}[
+  PolarStyle,
+  name=second,
+  at=(first.outer south east),
+  anchor=outer south west
+]
+\addplot[blue, only marks, mark=x, mark size=2pt]
+table[x index=0,y index=1, data cs=polar] {data/f-2.txt};
+\addlegendentry{2mA}
+\end{polaraxis}
+
+\begin{polaraxis}[
+  PolarStyle,
+  name=third,
+  at=(first.outer south west),
+  anchor=outer north west,
+  yshift=-0.25cm
+]
+\addplot[orange, only marks, mark=x, mark size=2pt]
+table[x index=0,y index=1, data cs=polar] {data/f-2,5.txt};
+\addlegendentry{2,5mA}
+\end{polaraxis}
+
+\begin{polaraxis}[
+  PolarStyle,
+  name=fourth,
+  at=(third.outer south east),
+  anchor=outer south west
+]
+\addplot[black, only marks, mark=x, mark size=2pt]
+table[x index=0,y index=1, data cs=polar] {data/f-3.txt};
+\addlegendentry{3mA}
+\end{polaraxis}
+\end{tikzpicture}
+\captionof{figure}{Leistung in Abhängigkeit der Ausrichtung des Drehwinkelmessers für einen angelegten Strom von 1mA, 2mA, 2,5mA und 3mA. Es ist eindeutig eine Zunahme des Polarisationsgrades des emmitierten Lichtes zu sehen. Bei 3mA ist bereits eine deutliche Polarisation feststellbar}
+\end{figure}
+
+
+\begin{figure}[h]
+\begin{tikzpicture}
+\begin{polaraxis}[
+  PolarStyle,
+  name=first
+]
+\addplot[red, only marks, mark=x, mark size=2pt]
+table[x index=0,y index=1, data cs=polar] {data/f-3,5.txt};
+\addlegendentry{3.5mA}
+\end{polaraxis}
+
+\begin{polaraxis}[
+  PolarStyle,
+  name=second,
+  at=(first.outer south east),
+  anchor=outer south west
+]
+\addplot[blue, only marks, mark=x, mark size=2pt]
+table[x index=0,y index=1, data cs=polar] {data/f-4.txt};
+\addlegendentry{4mA}
+\end{polaraxis}
+
+\begin{polaraxis}[
+  PolarStyle,
+  name=third,
+  at=(first.outer south west),
+  anchor=outer north west,
+  yshift=-0.25cm
+]
+\addplot[orange, only marks, mark=x, mark size=2pt]
+table[x index=0,y index=1, data cs=polar] {data/f-6.txt};
+\addlegendentry{6mA}
+\end{polaraxis}
+
+\begin{polaraxis}[
+  PolarStyle,
+  name=fourth,
+  at=(third.outer south east),
+  anchor=outer south west
+]
+\addplot[black, only marks, mark=x, mark size=2pt]
+table[x index=0,y index=1, data cs=polar] {data/f-8.txt};
+\addlegendentry{8mA}
+\end{polaraxis}
+
+\begin{polaraxis}[
+  PolarStyle,
+  name=fith,
+  at=(third.outer south west),
+  anchor=outer north west,
+  yshift=-0.25cm
+]
+\addplot[brown, only marks, mark=x, mark size=2pt]
+table[x index=0,y index=1, data cs=polar] {data/f-10.txt};
+\addlegendentry{10mA}
+\end{polaraxis}
+
+\begin{polaraxis}[
+  PolarStyle,
+  name=sixth,
+  at=(fith.outer south east),
+  anchor=outer south west
+]
+\addplot[purple, only marks, mark=x, mark size=2pt]
+table[x index=0,y index=1, data cs=polar] {data/f-12.txt};
+\addlegendentry{12mA}
+\end{polaraxis}
+\end{tikzpicture}
+\captionof{figure}{Leistung in Abhängigkeit der Ausrichtung des Drehwinkelmessers für einen angelegten Strom von 3.5mA, 4mA, 6mA, 8mA, 10mA und 12mA. Mit bloßem Auge ist hier keine weitere zunahme des Polarisationsgrades mehr zu sehen, es liegt durchgehend zirkular polarisiertes Licht vor.}
+\end{figure}
+
 
 \chapter{Auswertung}
 \section{Aufnahme der P-I-Kennlinie der LED}
