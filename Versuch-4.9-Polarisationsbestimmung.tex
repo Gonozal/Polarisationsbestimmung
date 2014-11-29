@@ -270,37 +270,7 @@ Die Differenzen der am BSK eingestellten Werte mit und ohne  $\frac{\lambda}{4}$
 	\end{tabular}
 \end{center}
 
-Das Messen jeweils dreier Werte ist sinnvoll, um eine größere Genauigkeit zu erreichen. Durch das benutzen von 3 Messdaten kann der erwartete Fehler durch $\sqrt{3}$ geteilt werden. Nach Mittelwertbildung und Umrechnung auf das Gradmaß ergibt sich eine Verteilung gemäß folgender Grafik:
-
-\begin{center}
-\begin{figure}[h]
-\begin{tikzpicture}
-\begin{axis}[
-    legend pos=south west,
-    title={Phasenverschiebung in Abhängigkeit der Wellenlänge},
-    xlabel=Wellenlänge in nm,
-    ylabel=Phasenverschiebung in Grad,
-    width=0.9\textwidth,
-    height= 9cm,
-    xmin=450,
-    xmax=730,
-    grid=both,
-    ymin=75,
-    ymax=125,
-    tick align=outside,
-    tickpos=left,
-    minor x tick num=3,
-    minor y tick num=4,
-    minor grid style={dotted,thin}
-]
-\addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y fixed=0.99, x dir=both, x fixed=6.00]
-table[x index={0}, y index={1}] {data/delta.txt};
-\end{axis}
-\end{tikzpicture}
-\captionof{figure}{Wellenlängenabhängige Phasenverschiebung des Verzögerungsplättchens. Der Fehler der Wellenlänge kann mit 6nm angenommen werden, da die Halbwertsbreite $10 \pm 2$ beträgt (Quelle: Datenblatt), den Fehler der abgelesenen Werte am BSK haben wir mit 0,06 abgeschätzt. Nach division durch $\sqrt{3}$ ergibt dies einen Fehler der Phasenverschiebung von 0,99$^\circ$.}
-\end{figure}
-\end{center}
-
+Das Messen jeweils dreier Werte ist sinnvoll, um eine größere Genauigkeit zu erreichen. Durch das benutzen von 3 Messdaten kann der erwartete Fehler durch $\sqrt{3}$ geteilt werden.
 \section{Charakterisierung des Polarisationszustandes mit Hilfe des Stokes-Formalismus}
 Zur Herstellung linearer Polarisation stehen uns die bekannten Glan-Thomson-Polarisationsprismen zur Verfügung. Um daraus zirkular polarisiertes Licht zu erzeugen, bedienen wir uns des $\frac{\lambda}{4}$-Plättchens, dessen Verzögerung wir im vorigen Abschnitt für die jeweiligen Wellenlängen genau bestimmt haben. Im Folgenden werden alle Messungen mit Filter 4 (694,3nm) durchgeführt, das heißt $\delta = (0,639 \pm 9,556 \cdot 10^{-3}) \pi$. Zunächst messen wir ohne $\frac{\lambda}{4}$-Plättchen, richten den 1. Linearpolarisator in y-Richtung aus und nehmen die Leistung über der Winkelposition des zweiten Polarisators auf (wir verwenden also lediglich den Drehwinkelaufnehmer mit Linearpolarisator, der restliche Aufbau bleibt unangetastet). Wir erhalten folgende Verteilung:
 
@@ -627,6 +597,59 @@ berechnen. Somit ist das Auslöschungsverhältniss
 \end{align*}
 \section{Bestimmung der wellenlängenaufgelösten Verzögerung des achromatischen Verzögerungsplättchens}
 TODO: Berechnung der Kalibrationsfaktoren für die einzelnen Wellenlängen, Fehlerrechnung für Kalibration; Berechnung der Verschiebung durch Verzögerungsplätchen, Umrechnung in Grad/Radian
+Aus den gemessenen Daten ergeben sich nach Mittelung folgende Verteilung für die genaue Verzögerung des Verzögerungsplättchens:
+\begin{center}
+  \begin{tabular}{|c|c|}
+    \hline
+        Wellenlänge des einfallenden Lichts in nm & Phasenverschiebung in Grad \\ \hline
+        $488 \pm 6$ & $83,34 \pm 0,99$ \\ \hline
+        $543,5 \pm 6$ & $93,9 \pm 0,99$ \\ \hline
+        $633 \pm 6$ & $107,22 \pm 0,99$ \\ \hline
+        $694,3 \pm 6$ & $115,08 \pm 0,99$ \\ \hline
+	\end{tabular}
+\end{center}
+
+Die Lage der Messwerte suggeriert eine lineare Abhängigkeit der Phasenverschiebung zur Wellenlänge. In der folgenden Graphik sind die Messwerte mit Fit- und Fehlergerraden zu sehen
+
+\begin{center}
+\begin{figure}[h]
+\begin{tikzpicture}
+\begin{axis}[
+    legend pos=south east,
+    title={Phasenverschiebung in Abhängigkeit der Wellenlänge},
+    xlabel=Wellenlänge in nm,
+    ylabel=Phasenverschiebung in Grad,
+    width=0.9\textwidth,
+    height= 9cm,
+    xmin=450,
+    xmax=730,
+    grid=both,
+    ymin=75,
+    ymax=125,
+    tick align=outside,
+    tickpos=left,
+    minor x tick num=3,
+    minor y tick num=4,
+    minor grid style={dotted,thin}
+]
+\addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y fixed=0.72, x dir=both, x fixed=6.00]
+table[x index={0}, y index={1}] {data/delta.txt};
+\addlegendentry{Gemittelte Messwerte}
+\addplot[red, mark size=0.0pt, samples=20, domain=460:720]{0.152852*x+9.74836};
+\addlegendentry{Fitgerade Verzögerung}
+\addplot[red, densely dashed, mark size=0.0pt, samples=20, domain=460:720]{0.187614*x-10.93660};
+\addplot[red, densely dashed, mark size=0.0pt, samples=20, domain=460:720]{0.118089*x+30.433310};
+\addlegendentry{Fehlergeraden Verzögerung}
+\end{axis}
+\end{tikzpicture}
+\captionof{figure}{Wellenlängenabhängige Phasenverschiebung des Verzögerungsplättchens. Der Fehler der Wellenlänge kann mit 6nm angenommen werden, da die Halbwertsbreite $10 \pm 2$ beträgt (Quelle: Datenblatt), den Fehler der abgelesenen Werte m BSK haben wir mit 0,06 abgeschätzt.}
+\end{figure}
+\end{center}
+\FloatBarrier
+Auf Grund der relativ geringen Anzahl an Messpunkten ist der errechnete Fehler relativ groß. Rechnerisch ergibt sich für die Fitgerade: $f(x) = (0,1529 \pm 0,035) \cdot x + 9,7484 \pm 20,6850$.
+
+Alternativ ist es möglich, dass die gemessenen Punkte nur nach einem linearen verlauf aussehen, in wirklichkeit allerdings eine komplexere Funktion zugrunde liegt.
+
 
 \section{Charakterisierung des Polarisationszustandes mit Hilfe des Stokes-Formalismus}
 TODO: Berechnung der Stokes-Parameter. Wichtig: Benutzung der in Aufgabenteil d bestimmten, genaueren und von 90° abweichenden, verzögerung des $\frac{\lambda}{4}$ Plättchens. Was ergibt sich für den Aufbau der 3-D Brille?
