@@ -171,7 +171,7 @@ Zuerst nehmen wir eine P-I-Kennlinie der weißen LED auf. Das heißt, wir messen
 ]
 \addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y fixed relative=0.01, x dir=both, x fixed=0.05]
 table[x index={0},y index={1}] {data/1.txt};
-\addlegendentry{Leitung der LED auf der Photoplatte}
+\addlegendentry{Leistung der LED auf der Photoplatte}
 \end{axis}
 \end{tikzpicture}
 \captionof{figure}{Gemessene Leistung der LED auf der Photoplatte in abhängigkeit von der angelegten Stromstärke. Die angenommenen Fehler für die Stromstärke und die gemessene Leistung der LED betragen 0.05mA und 1 Prozent.}
@@ -212,8 +212,13 @@ Somit ist
 \frac{P_{min}}{P_{max}} =\left(1,321\pm0,016\right) \cdot 10^{-5}
 \end{align*}
 
+\clearpage
 \section{Bestimmung der wellenlängenaufgelösten Verzögerung des achromatischen Verzögerungsplättchens}
-Im Abschnitt 2.4 wurde bereits das $\frac{\lambda}{4}$-Plättchen beschrieben. Tatsächlich beträgt die Phasenverschiebung nicht immer genau $\frac{\pi}{2}$, sondern ist wellenlängenabhängig. Diese Abhängigkeit soll nun untersucht werden. Zu diesem Zweck steht uns ein Babinet-Soleil-Kompensator (im Folgen als BSK bezeichnet) zur Verfügung. Es handelt sich dabei grundsätzlich um ein verstellbares zusammengesetztes Verzögerungsplättchen nullter Ordnung, d.h. wie auch bei den verwendeten $\frac{\lambda}{4}$-Plättchen liegen zwei doppelbrechende Materialien derart aufeinander, dass die optischen Achsen senkrecht zueinander sind. Jedoch besteht beim BSK eine der Platten aus zwei Keilen, die per Stellschraube gegeneinander verschoben werden können, wodurch sich die Dickendifferenz und somit die Phasenverschiebung ändert. Da Leistungsminima am einfachsten gemessen werden können, fügen wir den BSK  zwischen beide Polarisatoren ein, die wir vorher senkrecht zueinander ausgerichtet haben (immer in Bezug auf die optischen Achsen) und richten ihn so aus, dass immernoch ein Minimum gemessen wird. Nun verdrehen wir ihn um 45 Grad und justieren die Dicke solange nach, bis drei nebeneinanderliegende Minima gemessen werden können. Diese Messungen führen wir mit verschiedenen Farbfiltern durch, jeweils bei 488nm, 543,5nm, 633nm und 694,3nm, um eine Referenz zu finden. Bei den verwendeten Farbfiltern handelt es sich um Interferenzfilter, d.h. sie bestehen aus vielen Schichten, die sich in Brechungsindex und Dicke unterscheiden. Das einfallende Licht wird in den jeweiligen Schichten teilweise reflektiert und transmittiert und durch konstruktive und destruktive Interferenz wird erreicht, dass insgesamt lediglich ein schmaler Wellenlängenbereich transmittiert wird. Folgende Werte lesen wir am BSK ab, wobei wir den Fehler mit 0,06 abschätzen: 
+Im Abschnitt 2.4 wurde bereits das $\frac{\lambda}{4}$-Plättchen beschrieben. Tatsächlich beträgt die Phasenverschiebung nicht immer genau $\frac{\pi}{2}$, sondern ist wellenlängenabhängig. Diese Abhängigkeit soll nun untersucht werden. Zu diesem Zweck steht uns ein Babinet-Soleil-Kompensator (im Folgen als BSK bezeichnet) zur Verfügung. 
+
+Da Leistungsminima am einfachsten gemessen werden können, fügen wir den BSK  zwischen beide Polarisatoren ein, die wir vorher senkrecht zueinander ausgerichtet haben (immer in Bezug auf die optischen Achsen) und richten ihn so aus, dass immernoch ein Minimum gemessen wird. Nun verdrehen wir ihn um 45 Grad und justieren die Dicke solange nach, bis drei nebeneinanderliegende Minima gemessen werden können. Diese Messungen führen wir mit verschiedenen Farbfiltern durch, jeweils bei 488nm, 543,5nm, 633nm und 694,3nm, um eine Referenz zu finden.
+
+Bei den verwendeten Farbfiltern handelt es sich um Interferenzfilter, das heißt sie bestehen aus vielen Schichten, die sich in Brechungsindex und Dicke unterscheiden. Das einfallende Licht wird in den jeweiligen Schichten teilweise reflektiert und transmittiert und durch konstruktive und destruktive Interferenz wird erreicht, dass insgesamt lediglich ein schmaler Wellenlängenbereich transmittiert wird. Folgende Werte lesen wir am BSK ab, wobei wir den Fehler mit 0,06 abschätzen: 
 
 \begin{center}
   \begin{tabular}{|c|c|c|c|}
@@ -237,7 +242,7 @@ Anschließend wird das $\frac{\lambda}{4}$-Plättchen in den Strahlengang hinter
 	\end{tabular}
 \end{center}
 
-Die Differenzen der am BSK eingestellten Werte mit und ohne  $\frac{\lambda}{4}$-Plättchen ergeben die Phasenverzögerung, wobei wir noch auf ganze Wellenlängen skalieren müssen, d.h. durch 2 dividieren (dies liefert $\delta$ im Bogenmaß) bzw. mit $\frac{360^\circ}{4\pi}$ multiplizieren (damit berechnen wir die Phasenverschiebung im Gradmaß). Die Phasenverschiebungen sind also: 
+Die Differenzen der am BSK eingestellten Werte mit und ohne  $\frac{\lambda}{4}$-Plättchen ergeben die Phasenverzögerung, wobei wir noch auf ganze Wellenlängen skalieren müssen, das heißt durch 2 dividieren (dies liefert $\delta$ im Bogenmaß) beziehungsweise mit $\frac{360^\circ}{4\pi}$ multiplizieren (damit berechnen wir die Phasenverschiebung im Gradmaß). Die Phasenverschiebungen sind also: 
 
 \begin{center}
   \begin{tabular}{|c|c|c|c|}
@@ -272,18 +277,17 @@ Das Messen jeweils dreier Werte ist sinnvoll, um eine größere Genauigkeit zu e
     minor y tick num=4,
     minor grid style={dotted,thin}
 ]
-\addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y fixed = 3,44, x dir=both, x fixed = 6]
-table[x index={0},y index={1}] {data/delta.txt};
-%\addlegendentry{}
+\addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y fixed=1.72, x dir=both, x fixed=6.00]
+table[x index={0}, y index={1}] {data/delta.txt};
 \end{axis}
 \end{tikzpicture}
-\captionof{figure}{Wellenlängenabhängige Phasenverschiebung des Verzögerungsplättchens. Der Fehler der Wellenlänge kann mit 6nm angenommen werden, da die Halbwertsbreite 10 $\pm 2$ beträgt (Quelle: Datenblatt), den Fehler der abgelesenen Werte am BSK haben wir mit 0,06 abgeschätzt, was einem Fehler der Phasenverschiebung von 1,72$^\circ$ entspricht.}
+\captionof{figure}{Wellenlängenabhängige Phasenverschiebung des Verzögerungsplättchens. Der Fehler der Wellenlänge kann mit 6nm angenommen werden, da die Halbwertsbreite $10 \pm 2$ beträgt (Quelle: Datenblatt), den Fehler der abgelesenen Werte am BSK haben wir mit 0,06 abgeschätzt, was einem Fehler der Phasenverschiebung von 1,72$^\circ$ entspricht.}
 \end{figure}
 \end{center}
+\FloatBarrier
 
 \section{Charakterisierung des Polarisationszustandes mit Hilfe des Stokes-Formalismus}
-
-Zur Herstellung linearer Polarisation stehen uns die bekannten Glan-Thomson-Polarisationsprismen zur Verfügung. Um daraus zirkular polarisiertes Licht zu erzeugen, bedienen wir uns des $\frac{\lambda}{4}$-Plättchens, dessen Verzögerung wir im vorigen Abschnitt für die jeweiligen Wellenlängen genau bestimmt haben. Im Folgenden werden alle Messungen mit Filter 4 (694,3nm) durchgeführt, d.h. $\delta = (0,639 \pm 9,556 \cdot 10^{-3}) \pi$. Zunächst messen wir ohne $\frac{\lambda}{4}$-Plättchen, richten den 1. Linearpolarisator in y-Richtung aus und nehmen die Leistung über der Winkelposition des zweiten Polarisators auf (wir verwenden also lediglich den Drehwinkelaufnehmer mit Linearpolarisator, der restliche Aufbau bleibt unangetastet). Wir erhalten folgende Verteilung:
+Zur Herstellung linearer Polarisation stehen uns die bekannten Glan-Thomson-Polarisationsprismen zur Verfügung. Um daraus zirkular polarisiertes Licht zu erzeugen, bedienen wir uns des $\frac{\lambda}{4}$-Plättchens, dessen Verzögerung wir im vorigen Abschnitt für die jeweiligen Wellenlängen genau bestimmt haben. Im Folgenden werden alle Messungen mit Filter 4 (694,3nm) durchgeführt, das heißt $\delta = (0,639 \pm 9,556 \cdot 10^{-3}) \pi$. Zunächst messen wir ohne $\frac{\lambda}{4}$-Plättchen, richten den 1. Linearpolarisator in y-Richtung aus und nehmen die Leistung über der Winkelposition des zweiten Polarisators auf (wir verwenden also lediglich den Drehwinkelaufnehmer mit Linearpolarisator, der restliche Aufbau bleibt unangetastet). Wir erhalten folgende Verteilung:
 
 \begin{center}
 \begin{figure}[H]
@@ -412,8 +416,46 @@ table[x index={0},y index={1}] {data/d-brille-2.txt};
 \end{center}
 
 \section{P-I-Kennlinie der VCSEL}
-TODO: Skizze/Aufbau, Einstellungen, aufgneommene Daten, anmerkung: wurde nach aufgabenteil f gemacht, Leistungsgrenze von 12mA vorgegeben
+TODO: Skizze
+Analog zur Aufnahme der P-I-Kennlinie der LED nehmen wir ebenfalls die P-I-Kennlinie der VCSEL auf. Hierzu wird im Aufbau die LED mit dem VCSEL ausgetauscht und auf diie erste Linse zur Kolimation des Lichts verzichtet, da der VCSEL bereits kolimiertes licht emittiert.
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=150mm]{img/skizzen/versuch_a.jpg}
+\caption{Versuchsaufbau zur Bestiimung der P-I-Kennlinie der VCSEL}
+\label{PI-Kennlinie-VCSEL}
+\end{figure}
 
+\begin{center}
+\begin{figure}[h]
+\begin{tikzpicture}
+\begin{axis}[
+    legend pos=south east,
+    title={Leistung der VCSEL in abhängigkeit der Stromstärke},
+    xlabel=Stromstärke in mA,
+    ylabel=Leistung in W,
+    width=0.9\textwidth,
+    height=9cm,
+    xmin=0,
+    xmax=13,
+    grid=both,
+    ymin=0,
+    ymax=0.0022,
+    tick align=outside,
+    tickpos=left,
+    minor x tick num=3,
+    minor y tick num=4,
+    minor grid style={dotted,thin}
+]
+\addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y fixed relative=0.01, x dir=both, x fixed=0.05]
+table[x index={0},y index={1}] {data/e-P-I.txt};
+\addlegendentry{Leistung der VCSEL auf der Photoplatte}
+\end{axis}
+\end{tikzpicture}
+\captionof{figure}{Gemessene Leistung der VCSEL auf der Photoplatte in abhängigkeit von der angelegten Stromstärke. Die angenommenen Fehler für die Stromstärke und die gemessene Leistung der VCSEL betragen 0.05mA und 1 Prozent.}
+\end{figure}
+\end{center}
+
+Analog zu Abschnitt 3.1 wurde als Fehler für die Stromstärke 0.05mA und als Fehler für die aufgenommene Leistung 1 Prozent angenommen.
 \section{Polarisationszustand des VCSLEs in Abhägigkeit des Stroms}
 TODO: Skizze/Aufbau, Einstellungen, aufgneommene Daten, anmerkung: wurde vor aufgabenteil e gemacht
 
