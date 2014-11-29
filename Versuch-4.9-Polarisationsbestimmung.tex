@@ -207,7 +207,7 @@ Anschließend wurde einer der Polarisatoren so lange gedreht, bis die aufgenomme
 \caption{Versuchsaufbau zur Bestimmung des Auslöschungsverhältnisses der Linearpolarisatoren}
 \label{Auslöschungsverhältniss-Linearpolarisatoren}
 \end{figure}
-
+Folgende Werte wurden aufgenommen:
 \begin{center}
   \begin{tabular}{|p{5cm}|p{4cm}|p{4.5cm}|}
     \hline
@@ -216,22 +216,13 @@ Anschließend wurde einer der Polarisatoren so lange gedreht, bis die aufgenomme
         0 & $5,111 \cdot 10^-4$ & $0,05 \cdot 10^-4$ \\ \hline
 	\end{tabular}
 \end{center}
-
-Daraus lässt sich das Auslöschungsverhätlniss inklusive Fehler mit
-
-\begin{align*}
-  \frac{P_{min}}{P_{max}} &= \frac{6,75*10^{-9} W}{5,111*10^{-4} W} = 1,321*10^{-5} \\
-  \Delta\frac{P_{min}}{P_{max}} &= \sqrt{\left(\frac{\Delta P_{min}}{P_{max}}\right)^2 + \left(\Delta P_{max} \cdot \frac{P_{min}}{P_{max}^2}\right)^2} = 1,62 * 10^{-7}
-\end{align*}
-
-Somit ist 
-\begin{align*}
-\frac{P_{min}}{P_{max}} =\left(1,321\pm0,016\right) \cdot 10^{-5}
-\end{align*}
-
-\clearpage
 \section{Bestimmung der wellenlängenaufgelösten Verzögerung des achromatischen Verzögerungsplättchens}
 Im Abschnitt 2.4 wurde bereits das $\frac{\lambda}{4}$-Plättchen beschrieben. Tatsächlich beträgt die Phasenverschiebung nicht immer genau $\frac{\pi}{2}$, sondern ist wellenlängenabhängig. Diese Abhängigkeit soll nun untersucht werden. Zu diesem Zweck steht uns ein Babinet-Soleil-Kompensator (im Folgen als BSK bezeichnet) zur Verfügung. 
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=150mm]{img/skizzen/versuch_c_1.jpg}
+\caption{Versuchsaufbau zur Kalibration des BSK}
+\end{figure}
 
 Da Leistungsminima am einfachsten gemessen werden können, fügen wir den BSK  zwischen beide Polarisatoren ein, die wir vorher senkrecht zueinander ausgerichtet haben (immer in Bezug auf die optischen Achsen) und richten ihn so aus, dass immernoch ein Minimum gemessen wird. Nun verdrehen wir ihn um 45 Grad und justieren die Dicke solange nach, bis drei nebeneinanderliegende Minima gemessen werden können. Diese Messungen führen wir mit verschiedenen Farbfiltern durch, jeweils bei 488nm, 543,5nm, 633nm und 694,3nm, um eine Referenz zu finden.
 
@@ -247,7 +238,15 @@ Bei den verwendeten Farbfiltern handelt es sich um Interferenzfilter, das heißt
 	\end{tabular}
 \end{center}
 
-Anschließend wird das $\frac{\lambda}{4}$-Plättchen in den Strahlengang hinter den BSK integriert, nach dem Minimum ausgerichtet, um 45 Grad gedreht und die Messung wiederholt, was uns folgende Werte liefert:  
+Anschließend wird das $\frac{\lambda}{4}$-Plättchen in den Strahlengang vor den BSK integriert, nach dem Minimum ausgerichtet, um 45 Grad gedreht und die Messung wiederholt.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=150mm]{img/skizzen/versuch_c_2.jpg}
+\caption{Versuchsaufbau zur Bestimmung der genauen Verzögerung des Verzögerungsplättchens}
+\end{figure}
+
+Dies liefert uns folgende Werte:
 
 \begin{center}
   \begin{tabular}{|c|c|c|c|}
@@ -301,7 +300,6 @@ table[x index={0}, y index={1}] {data/delta.txt};
 \captionof{figure}{Wellenlängenabhängige Phasenverschiebung des Verzögerungsplättchens. Der Fehler der Wellenlänge kann mit 6nm angenommen werden, da die Halbwertsbreite $10 \pm 2$ beträgt (Quelle: Datenblatt), den Fehler der abgelesenen Werte am BSK haben wir mit 0,06 abgeschätzt, was einem Fehler der Phasenverschiebung von 1,72$^\circ$ entspricht.}
 \end{figure}
 \end{center}
-\FloatBarrier
 
 \section{Charakterisierung des Polarisationszustandes mit Hilfe des Stokes-Formalismus}
 Zur Herstellung linearer Polarisation stehen uns die bekannten Glan-Thomson-Polarisationsprismen zur Verfügung. Um daraus zirkular polarisiertes Licht zu erzeugen, bedienen wir uns des $\frac{\lambda}{4}$-Plättchens, dessen Verzögerung wir im vorigen Abschnitt für die jeweiligen Wellenlängen genau bestimmt haben. Im Folgenden werden alle Messungen mit Filter 4 (694,3nm) durchgeführt, das heißt $\delta = (0,639 \pm 9,556 \cdot 10^{-3}) \pi$. Zunächst messen wir ohne $\frac{\lambda}{4}$-Plättchen, richten den 1. Linearpolarisator in y-Richtung aus und nehmen die Leistung über der Winkelposition des zweiten Polarisators auf (wir verwenden also lediglich den Drehwinkelaufnehmer mit Linearpolarisator, der restliche Aufbau bleibt unangetastet). Wir erhalten folgende Verteilung:
@@ -607,8 +605,26 @@ table[x index=0,y index=1, data cs=polar] {data/f-12.txt};
 TODO: Tabelle, Graph, Fehlerrechnung
 
 \section{Auslöschungsverhältniss der Linearpolarisatoren}
-TODO: Gegenüberstellung, Quotient, Fehlerrechnung
+Aus den für die beiden Linearpolarisatoren aufgenommenen Werten
+\begin{center}
+  \begin{tabular}{|p{5cm}|p{4cm}|p{4.5cm}|}
+    \hline
+        Winkel $\alpha$ zwischen den Polarisationsachsen in Grad & Leistung P in W & Fehler $\Delta$P der Leistung in W \\ \hline
+        90 & $6,75 \cdot 10^{-9}$ & $0,05 \cdot 10^{-9}$ \\ \hline
+        0 & $5,111 \cdot 10^{-4}$ & $0,05 \cdot 10^{-4}$ \\ \hline
+	\end{tabular}
+\end{center}
 
+lässt sich das Auslöschungsverhätlniss inklusive Fehler mit
+\begin{align*}
+  \frac{P_{min}}{P_{max}} &= \frac{6,75*10^{-9} W}{5,111*10^{-4} W} = 1,321*10^{-5} \\
+  \Delta\frac{P_{min}}{P_{max}} &= \sqrt{\left(\frac{\Delta P_{min}}{P_{max}}\right)^2 + \left(\Delta P_{max} \cdot \frac{P_{min}}{P_{max}^2}\right)^2} = 1,62 * 10^{-7}
+\end{align*}
+
+berechnen. Somit ist das Auslöschungsverhältniss
+\begin{align*}
+\frac{P_{min}}{P_{max}} =\left(1,321\pm0,016\right) \cdot 10^{-5}
+\end{align*}
 \section{Bestimmung der wellenlängenaufgelösten Verzögerung des achromatischen Verzögerungsplättchens}
 TODO: Berechnung der Kalibrationsfaktoren für die einzelnen Wellenlängen, Fehlerrechnung für Kalibration; Berechnung der Verschiebung durch Verzögerungsplätchen, Umrechnung in Grad/Radian
 
