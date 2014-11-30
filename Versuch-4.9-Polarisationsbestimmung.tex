@@ -265,7 +265,7 @@ Der physikalische Hintergrund dieser Messungen ist, dass wir durch die Einstellu
 
 Das Messen jeweils dreier Werte ist sinnvoll, um eine größere Genauigkeit zu erreichen. Durch das benutzen von 3 Messdaten kann der erwartete Fehler durch $\sqrt{3}$ geteilt werden.
 \section{Charakterisierung des Polarisationszustandes mit Hilfe des Stokes-Formalismus}
-Zur Herstellung linearer Polarisation stehen uns die bekannten Glan-Thomson-Polarisationsprismen zur Verfügung. Um daraus zirkular polarisiertes Licht zu erzeugen, bedienen wir uns des $\frac{\lambda}{4}$-Plättchens, dessen Verzögerung wir im vorigen Abschnitt für die jeweiligen Wellenlängen genau bestimmt haben. Im Folgenden werden alle Messungen mit Filter 4 (694,3nm) durchgeführt. Zunächst messen wir ohne $\frac{\lambda}{4}$-Plättchen, richten den 1. Linearpolarisator in y-Richtung aus und nehmen die Leistung über der Winkelposition des zweiten Polarisators auf (wir verwenden also lediglich den Drehwinkelaufnehmer mit Linearpolarisator, der restliche Aufbau bleibt unangetastet). Wir erhalten folgende Verteilung:
+Zur Herstellung linearer Polarisation stehen uns die bekannten Glan-Thomson-Polarisationsprismen zur Verfügung. Um daraus zirkular polarisiertes Licht zu erzeugen, bedienen wir uns des $\frac{\lambda}{4}$-Plättchens, dessen Verzögerung wir im vorigen Abschnitt für die jeweiligen Wellenlängen genau bestimmt haben. Im Folgenden werden alle Messungen mit Filter 4 (694,3nm) durchgeführt. Zunächst messen wir ohne $\frac{\lambda}{4}$-Plättchen, richten den ersten Linearpolarisator in y-Richtung aus und nehmen die Leistung über der Winkelposition des zweiten Polarisators auf (wir verwenden also lediglich den Drehwinkelaufnehmer mit Linearpolarisator, der restliche Aufbau bleibt unangetastet). Wir erhalten folgende Verteilung:
 
 \begin{center}
 \begin{figure}[H]
@@ -487,7 +487,7 @@ table[x index=0,y index=1, data cs=polar] {data/f-3.txt};
 \addlegendentry{3mA}
 \end{polaraxis}
 \end{tikzpicture}
-\captionof{figure}{Leistung in Abhängigkeit der Ausrichtung des Drehwinkelmessers für einen angelegten Strom von 1mA, 2mA, 2,5mA und 3mA. Es ist eindeutig eine Zunahme des Polarisationsgrades des emmitierten Lichtes zu sehen. Bei 3mA ist bereits eine deutliche Polarisation feststellbar}
+\captionof{figure}{Leistung in Abhängigkeit der Ausrichtung des Drehwinkelmessers für einen angelegten Strom von 1mA, 2mA, 2,5mA und 3mA. Es ist eindeutig eine Zunahme des Polarisationsgrades des emittierten Lichtes zu sehen. Bei 3mA ist bereits eine deutliche Polarisation feststellbar}
 \end{figure}
 
 
@@ -699,21 +699,7 @@ Dies bietet sich auch vor allem deshalb an, weil man nun die Darstellung diskret
  S4 &= \frac{2}{N} \sum_{i=1}^N I_{Ti} sin(4 \beta_i)
 \end{align*}
 
-Der Index i repräsentiert den i-ten Messwert jeweils der Intensität und des Winkels, d.h. wir summieren in 72 Schritten die Messwerte auf und erhalten damit für jede der 4 Messaufbauten einen Satz von Fourierkoeffizienten,: 
-
-\begin{center}
-  \begin{tabular}{|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
-    \hline
-        Fourierkoeffizient & Messung 1 & Messung 2 & Messung 3 & Messung 4 \\ \hline
-        C0 & 0 & 0 & 0 & 0 \\ \hline
-        C2 & 0 & 0 & 0 & 0 \\ \hline
-        C4 & 0 & 0 & 0 & 0 \\ \hline
-        S2 & 0 & 0 & 0 & 0 \\ \hline
-        S4 & 0 & 0 & 0 & 0 \\ \hline
-	\end{tabular}
-\end{center}
-
-Aus den Fourierkoeffizienten lassen sich nun die gesuchten Stokes-Parameter wie folgt berechnen: 
+Der Index i repräsentiert den i-ten Messwert jeweils der Intensität und des Winkels, d.h. wir summieren in 72 Schritten die Messwerte auf und erhalten damit für jede der 4 Messaufbauten einen Satz von Fourierkoeffizienten, aus denen sich nun die gesuchten Stokes-Parameter wie folgt berechnen lassen: 
 
 \begin{align*}
  S_0 &= C0 - C4 \frac{1 + cos(\delta)}{1 - cos(\delta)},\\ 
@@ -722,18 +708,46 @@ Aus den Fourierkoeffizienten lassen sich nun die gesuchten Stokes-Parameter wie 
  S_3 &= \frac{-S2}{sin(\delta)} 
 \end{align*}
 
-Wir können also die erzeugten Polarisationszustände mit folgenden 4 Sätzen von Stokes-Parametern klassifizieren: 
+Wir können also die erzeugten Polarisationszustände mit 4 Sätzen von Stokes-Parametern klassifizieren. Die oben beschriebene Rechnung führen wir mit Mathematica durch und erhalten: 
 
 \begin{center}
   \begin{tabular}{|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
     \hline
         Stokes-Parameter & Messung 1 & Messung 2 & Messung 3 & Messung 4 \\ \hline
-        $S_0$ & 0 & 0 & 0 & 0 \\ \hline
-        $S_1$ & 0 & 0 & 0 & 0 \\ \hline
-        $S_2$ & 0 & 0 & 0 & 0 \\ \hline
-        $S_3$ & 0 & 0 & 0 & 0 \\ \hline
+        $S_0$ & 1 & 1 & 1 & 1 \\ \hline
+        $S_1$ & -0,996 & -0,064 & 0,461 & 1,015 \\ \hline
+        $S_2$ & 0,142 & -0,026 & 0,062 & -0,017 \\ \hline
+        $S_3$ & 0,002 & 0,987 & 0,881 & 0,003 \\ \hline
 \end{tabular}
 \end{center}
+
+Bzw. die folgenden normierten Stokes-Vektoren:
+
+\begin{center}
+  \begin{tabular}{|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
+    \hline
+        Stokes Parameter normiert & Messung 1 & Messung 2 & Messung 3 & Messung 4 \\ \hline
+        $S_0$ & 0,0198 & 0,0018 & 0,0091 & 0,0187 \\ \hline
+        $S_1$ & 0,0215 & 0,0023 & 0,0098 & 0,0188 \\ \hline
+        $S_2$ & 0,0778 & 0,0050 & 0,0360 & 0,0791 \\ \hline
+        $S_3$ & 1,74$\cdot 10^{-6}$ & 0,0007 & 0,0007 & 2,14$\cdot 10^{-6}$ \\ \hline
+\end{tabular}
+\end{center}
+
+Ebenso mit Mathematica berechnen wir zusätzlich den Grad der Polarisation (DOP) sowie den zugehörigen Fehler: 
+
+\begin{center}
+  \begin{tabular}{|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
+    \hline
+        Wert & Messung 1 & Messung 2 & Messung 3 & Messung 4 \\ \hline
+        DOP & 1,006 & 0,990 & 0,996 & 1,015 \\ \hline
+        $\Delta$DOP & 0,031 & 0,002 & 0,010 & 0,027 \\ \hline
+\end{tabular}
+\end{center}
+
+Die Messaufbauten sind unter 3.4 näher beschrieben, zur Erinnerung eine kurze Zusammenfassung: Messung 1 erfolgte mit Linearpolarisator in y-Richtung, bei Messung 2 wurde dieser um 45$^{\circ}$ verdreht und ein $\frac{\lambda}{4}$-Plättchen montiert, die dritte Messung wurde mit in Blickrichtung bestrahlter 3D-Kinobrille durchgeführt und Messung 4 mit umgedrehter 3D-Brille. Wie aus den Stokes-Parametern ersichtlich ist, liegt bei der ersten Messung linear in y-Richtung polarisiertes Licht vor, der ideale zugehöre Stokes-Vektor wäre $(1,-1,0,0)^T$. Der aus den Messwerten berechnete Stokes-Vektor kommt dem also sehr nahe. Bei der zweiten Messung liegt, wie erwartet, durch den um 45$^{\circ}$ verdrehten Polarisator und das zusätzlich montierte $\frac{\lambda}{4}$-Plättchen, zirkular polarisiertes Licht vor. Der Stokes Vektor $(1,0,0,1)^T$ entspricht perfekt rechtszirkular polarisiertem Licht. Messung 3 ist nicht ganz so eindeutig wie die vorherige, lässt aber ebenfalls auf rechtszirkular polarisiertes Licht schließen, wobei hierbei noch ein nicht unerheblicher Teil des Lichts linear in y-Richtung polarisiert ist. Beim letzten Aufbau ergibt sich linear in x-Richtung polarisiertes Licht, der ideale Stokes-Vektor hierfür wäre $(1,1,0,0)^T$, welchem die berechneten Werte wiederum in sehr guter Näherung entsprechen.
+
+Damit erschließt sich auch die Funktionsweise der 3D-Brille: 
 
 \section{P-I-Kennlinie der VCSEL}
 Bis zu einer angelegten Stromstärke von etwa 3mA steigt die Leistung der VCSEL nur sehr langsam an. Dies kann dadurch erklärt werden, dass im Vergleich zu Absorption in der VCSEL die Verstärkung im Resoatur nur gering ist, also kaum oder keine Verstärkung stattfindet. Die anschließende annährend linear ansteigende Leistung verhält sich wie in einem typischen Laserresonator, wobei im Gegensatz zu makroskopischen resonatoren der Anstieg der Leistung mit zunehmender Stromstärke wieder abnimmt. Dies ist dadurch zu erklären, dass auf Grund der geringen Länge der einzelnen Resonatorschichten bereits kleine Längenänderungen im Resonator die Verstärkung negativ beinträchtigen kann.
