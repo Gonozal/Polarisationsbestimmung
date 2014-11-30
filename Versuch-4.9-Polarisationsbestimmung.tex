@@ -213,7 +213,7 @@ Somit ist
 \end{align*}
 
 \section{Bestimmung der wellenlängenaufgelösten Verzögerung des achromatischen Verzögerungsplättchens}
-Im Abschnitt 2.4 wurde bereits das $\frac{\lambda}{4}$-Plättchen beschrieben. Tatsächlich beträgt die Phasenverschiebung nicht immer genau $\frac{\pi}{2}$, sondern ist wellenlängenabhängig. Diese Abhängigkeit soll nun untersucht werden. Zu diesem Zweck steht uns ein Babinet-Soleil-Kompensator (im Folgen als BSK bezeichnet) zur Verfügung. Es handelt sich dabei grundsätzlich um ein verstellbares zusammengesetztes Verzögerungsplättchen nullter Ordnung, d.h. wie auch bei den verwendeten $\frac{\lambda}{4}$-Plättchen liegen zwei doppelbrechende Materialien derart aufeinander, dass die optischen Achsen senkrecht zueinander sind. Jedoch besteht beim BSK eine der Platten aus zwei Keilen, die per Stellschraube gegeneinander verschoben werden können, wodurch sich die Dickendifferenz und somit die Phasenverschiebung ändert. Da Leistungsminima am einfachsten gemessen werden können, fügen wir den BSK  zwischen beide Polarisatoren ein, die wir vorher senkrecht zueinander ausgerichtet haben (immer in Bezug auf die optischen Achsen) und richten ihn so aus, dass immernoch ein Minimum gemessen wird. Nun verdrehen wir ihn um 45 Grad und justieren die Dicke solange nach, bis drei nebeneinanderliegende Minima gemessen werden können. Diese Messungen führen wir mit verschiedenen Farbfiltern durch, jeweils bei 488nm, 543,5nm, 633nm und 694,3nm, um eine Referenz zu finden. Bei den verwendeten Farbfiltern handelt es sich um Interferenzfilter, d.h. sie bestehen aus vielen Schichten, die sich in Brechungsindex und Dicke unterscheiden. Das einfallende Licht wird in den jeweiligen Schichten teilweise reflektiert und transmittiert und durch konstruktive und destruktive Interferenz wird erreicht, dass insgesamt lediglich ein schmaler Wellenlängenbereich transmittiert wird. Folgende Werte lesen wir am BSK ab, wobei wir den Fehler mit 0,06 abschätzen: 
+Im Abschnitt 2.4 wurde bereits das $\frac{\lambda}{4}$-Plättchen beschrieben. Tatsächlich beträgt die Phasenverschiebung nicht immer genau $\frac{\pi}{2}$, sondern ist wellenlängenabhängig. Diese Abhängigkeit soll nun untersucht werden. Zu diesem Zweck steht uns ein Babinet-Soleil-Kompensator (im Folgen als BSK bezeichnet) zur Verfügung. Es handelt sich dabei grundsätzlich um ein verstellbares zusammengesetztes Verzögerungsplättchen nullter Ordnung, d.h. wie auch bei den verwendeten $\frac{\lambda}{4}$-Plättchen liegen zwei doppelbrechende Materialien derart aufeinander, dass die optischen Achsen senkrecht zueinander sind. Jedoch besteht beim BSK eine der Platten aus zwei Keilen, die per Stellschraube gegeneinander verschoben werden können, wodurch sich die Dickendifferenz und somit die Phasenverschiebung ändert. Da Leistungsminima am einfachsten gemessen werden können, fügen wir den BSK  zwischen beide Polarisatoren ein, die wir vorher senkrecht zueinander ausgerichtet haben (immer in Bezug auf die optischen Achsen) und richten ihn so aus, dass immernoch ein Minimum gemessen wird. Nun verdrehen wir ihn um 45 Grad und justieren die Dicke solange nach, bis drei nebeneinanderliegende Minima gemessen werden können. Diese Messungen führen wir mit verschiedenen Farbfiltern durch, jeweils bei 488nm, 543,5nm, 633nm und 694,3nm, um eine Referenz zu finden. Bei den verwendeten Farbfiltern handelt es sich um Interferenzfilter, d.h. sie bestehen aus vielen Schichten, die sich in Brechungsindex und Dicke unterscheiden. Das einfallende Licht wird in den jeweiligen Schichten teilweise reflektiert und transmittiert und durch konstruktive und destruktive Interferenz wird erreicht, dass insgesamt lediglich ein schmaler Wellenlängenbereich transmittiert wird. Folgende Werte s lesen wir am BSK ab: 
 
 \begin{center}
   \begin{tabular}{|c|c|c|c|}
@@ -237,7 +237,7 @@ Anschließend wird das $\frac{\lambda}{4}$-Plättchen in den Strahlengang hinter
 	\end{tabular}
 \end{center}
 
-Die Differenzen der am BSK eingestellten Werte mit und ohne  $\frac{\lambda}{4}$-Plättchen ergeben die Phasenverzögerung, wobei wir noch auf ganze Wellenlängen skalieren müssen, d.h. durch 2 dividieren (dies liefert $\delta$ im Bogenmaß) bzw. mit $\frac{360^\circ}{4\pi}$ multiplizieren (damit berechnen wir die Phasenverschiebung im Gradmaß). Die Phasenverschiebungen sind also: 
+Der physikalische Hintergrund dieser Messungen ist, dass wir durch die Einstellung des BSK gerade die Wirkung des Verzögerungsplättchens aufheben, d.h. die Differenzen der am BSK eingestellten Werte mit und ohne  $\frac{\lambda}{4}$-Plättchen ergeben die Phasenverzögerung, wobei wir noch auf ganze Wellenlängen skalieren müssen, also durch 2 dividieren (dies liefert $\delta$ im Bogenmaß) bzw. mit $\frac{360^\circ}{4\pi}$ multiplizieren (damit berechnen wir die Phasenverschiebung im Gradmaß). Die Phasenverschiebungen sind dementsprechend: 
 
 \begin{center}
   \begin{tabular}{|c|c|c|c|}
@@ -249,7 +249,7 @@ Die Differenzen der am BSK eingestellten Werte mit und ohne  $\frac{\lambda}{4}$
 	\end{tabular}
 \end{center}
 
-Das Messen jeweils dreier Werte ist sinnvoll, um eine größere Genauigkeit zu erreichen. Nach Mittelwertbildung und Umrechnung auf das Gradmaß ergibt sich eine Verteilung gemäß folgender Grafik:
+Das Messen jeweils dreier Werte ist sinnvoll, um eine größere Genauigkeit zu erreichen. Der Fehler berechnet sich nach Gauß zu: $\Delta \delta = \frac{1}{2} \sqrt{6 \cdot \Delta s \cdot \frac{1}{3}} = 7,797 \cdot 10 ^{-3} \pi$, wobei wir den Ablesefehler $\Delta s$ mit 0,06 abgeschätzt haben. Nach Mittelwertbildung und Umrechnung auf das Gradmaß ergibt sich eine Verteilung gemäß folgender Grafik:
 
 \begin{center}
 \begin{figure}[h]
@@ -272,18 +272,18 @@ Das Messen jeweils dreier Werte ist sinnvoll, um eine größere Genauigkeit zu e
     minor y tick num=4,
     minor grid style={dotted,thin}
 ]
-\addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y fixed = 3,44, x dir=both, x fixed = 6]
+\addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y fixed = 1.4, x dir=both, x fixed = 6]
 table[x index={0},y index={1}] {data/delta.txt};
 %\addlegendentry{}
 \end{axis}
 \end{tikzpicture}
-\captionof{figure}{Wellenlängenabhängige Phasenverschiebung des Verzögerungsplättchens. Der Fehler der Wellenlänge kann mit 6nm angenommen werden, da die Halbwertsbreite 10 $\pm 2$ beträgt (Quelle: Datenblatt), den Fehler der abgelesenen Werte am BSK haben wir mit 0,06 abgeschätzt, was einem Fehler der Phasenverschiebung von 1,72$^\circ$ entspricht.}
+\captionof{figure}{Wellenlängenabhängige Phasenverschiebung des Verzögerungsplättchens. Der Fehler der Wellenlänge kann mit 6nm angenommen werden, da die Halbwertsbreite $10 \pm 2$ beträgt (Quelle: Datenblatt), der Fehler der Phasenverschiebung ist $7,797 \cdot 10 ^{-3} \pi \cdot \frac{360^\circ}{2\pi} = 1,40^\circ$.}
 \end{figure}
 \end{center}
 
 \section{Charakterisierung des Polarisationszustandes mit Hilfe des Stokes-Formalismus}
 
-Zur Herstellung linearer Polarisation stehen uns die bekannten Glan-Thomson-Polarisationsprismen zur Verfügung. Um daraus zirkular polarisiertes Licht zu erzeugen, bedienen wir uns des $\frac{\lambda}{4}$-Plättchens, dessen Verzögerung wir im vorigen Abschnitt für die jeweiligen Wellenlängen genau bestimmt haben. Im Folgenden werden alle Messungen mit Filter 4 (694,3nm) durchgeführt, d.h. $\delta = (0,639 \pm 9,556 \cdot 10^{-3}) \pi$. Zunächst messen wir ohne $\frac{\lambda}{4}$-Plättchen, richten den 1. Linearpolarisator in y-Richtung aus und nehmen die Leistung über der Winkelposition des zweiten Polarisators auf (wir verwenden also lediglich den Drehwinkelaufnehmer mit Linearpolarisator, der restliche Aufbau bleibt unangetastet). Wir erhalten folgende Verteilung:
+Zur Herstellung linearer Polarisation stehen uns die bekannten Glan-Thomson-Polarisationsprismen zur Verfügung. Um daraus zirkular polarisiertes Licht zu erzeugen, bedienen wir uns des $\frac{\lambda}{4}$-Plättchens, dessen Verzögerung wir im vorigen Abschnitt für die jeweiligen Wellenlängen genau bestimmt haben. Im Folgenden werden alle Messungen mit Filter 4 (694,3nm) durchgeführt, d.h. $\delta = (0,639 \pm 7,797 \cdot 10^{-3}) \pi$. Zunächst messen wir ohne $\frac{\lambda}{4}$-Plättchen, richten den 1. Linearpolarisator in y-Richtung aus und nehmen die Leistung über der Winkelposition des zweiten Polarisators auf (wir verwenden also lediglich den Drehwinkelaufnehmer mit Linearpolarisator, der restliche Aufbau bleibt unangetastet). Wir erhalten folgende Verteilung:
 
 \begin{center}
 \begin{figure}[H]
