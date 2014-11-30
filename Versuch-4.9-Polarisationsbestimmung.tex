@@ -157,45 +157,35 @@ Abgesehen von den genannte Personenschäden sind bei nicht sachgemäßer Handlun
 \section{Aufnahme der P-I-Kennlinie der LED}
 \label{sec:pikennlinie}
 Zuerst nehmen wir eine P-I-Kennlinie der weißen LED auf. Das heißt, wir messen die abgestrahlte Lichtleistung über dem Strom. Da die LED in einem sehr großen Winkel abstrahlt, verwenden wir hierfür zwei Linsen, um eine Kollimation zu erreichen. Unser Aufbau besteht hierbei aus der LED, den beiden Linsen und dem Detektor, die in dieser Reihenfolge auf einem Reiter montiert werden.
+
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=150mm]{img/skizzen/versuch_a.jpg}
 \caption{Versuchsaufbau zur Bestiimung der P-I-Kennlinie der LED}
 \label{PI-Kennlinie-LED}
 \end{figure}
+
+Wir erhalten folgende Messwerte:
+
 \begin{center}
-\begin{figure}[h]
-\begin{tikzpicture}
-\begin{axis}[
-    legend pos=south west,
-    title={Leistung der weißen LED in abhängigkeit der Stromstärke},
-    xlabel=Stromstärke in mA,
-    ylabel=Leistung in W,
-    width=0.9\textwidth,
-    height= 9cm,
-    xmin=0,
-    xmax=55,
-    grid=both,
-    ymin=0,
-    ymax=0.0045,
-    tick align=outside,
-    tickpos=left,
-    minor x tick num=3,
-    minor y tick num=4,
-    minor grid style={dotted,thin}
-]
-\addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y fixed relative=0.01, x dir=both, x fixed=0.05]
-table[x index={0},y index={1}] {data/1.txt};
-\addlegendentry{Leistung der LED auf der Photoplatte}
-\end{axis}
-\end{tikzpicture}
-\captionof{figure}{Gemessene Leistung der LED auf der Photoplatte in abhängigkeit von der angelegten Stromstärke. Die angenommenen Fehler für die Stromstärke und die gemessene Leistung der LED betragen 0.05mA und 1 Prozent.}
-\end{figure}
+  \begin{tabular}{|p{3.5cm}|p{4cm}|p{5cm}|}
+    \hline
+        Strom in mA & Leistung P in W & Fehler $\Delta$P der Leistung in W \\ \hline
+        0 & $-7,799 \cdot 10^{-11}$ & $-7,799 \cdot 10^{-13}$ \\ \hline
+        5 & $7,875 \cdot 10^-4$ & $7,875 \cdot 10^-6$ \\ \hline
+        10 & $1,453 \cdot 10^-3$ & $1,453 \cdot 10^-5$ \\ \hline
+        15 & $2,011 \cdot 10^-3$ & $2,011 \cdot 10^-5$ \\ \hline
+        20 & $2,478 \cdot 10^-3$ & $2,478 \cdot 10^-5$ \\ \hline
+        25 & $2,883 \cdot 10^-3$ & $2,883 \cdot 10^-5$ \\ \hline
+        30 & $3,218 \cdot 10^-3$ & $3,218 \cdot 10^-5$ \\ \hline
+        35 & $3,505 \cdot 10^-3$ & $3,505 \cdot 10^-5$ \\ \hline
+        40 & $3,748 \cdot 10^-3$ & $3,748 \cdot 10^-5$ \\ \hline
+        45 & $3,958 \cdot 10^-3$ & $3,958 \cdot 10^-5$ \\ \hline
+        50 & $4,136 \cdot 10^-3$ & $4,136 \cdot 10^-5$ \\ \hline
+	\end{tabular}
 \end{center}
 
 Als Fehler für die Stromstärke wurden 0.05mA angenommen, da die Stromquelle nur eine Nachkommastelle anzeigte. Dagegen wurde als Fehler für die aufgenommene Leistung 1 Prozent angenommen. Zwar ist das verwendete Messgerät deutlich genauer, allerdings wurden dennoch offensichtliche Schwankungen in der gemessenen Leistung beobachtet, welche entweder durch den im Raum verwendeten Monitor oder durch eine nicht konstante Leistung der LED verursacht wurden.
-
-Bis etwa 20mA nimmt die Leistung der LED angenähert proportional zur angelegten Stromstärke zu, danach scheint sich die Leistung langsam einem Maximalwert anzunähern.
 
 \section{Auslöschungsverhältniss der Linearpolarisatoren}
 Zur Bestimmung des Auslöschungsverhältnisses der Linearpolarisatoren wurden in den Aufbau aus Abschnitt~\ref{sec:pikennlinie} noch 2 Linearpolarisatoren eingefügt.
@@ -572,10 +562,42 @@ table[x index=0,y index=1, data cs=polar] {data/f-12.txt};
 \captionof{figure}{Leistung in Abhängigkeit der Ausrichtung des Drehwinkelmessers für einen angelegten Strom von 3.5mA, 4mA, 6mA, 8mA, 10mA und 12mA. Mit bloßem Auge ist hier keine weitere zunahme des Polarisationsgrades mehr zu sehen, es liegt durchgehend zirkular polarisiertes Licht vor.}
 \end{figure}
 
-
 \chapter{Auswertung}
 \section{Aufnahme der P-I-Kennlinie der LED}
-TODO: Tabelle, Graph, Fehlerrechnung
+
+Die unter Abschnitt 3.2 aufgelisteten Messwerte ergeben linear aufgetragen folgende Kennlinie:
+
+\begin{center}
+\begin{figure}[h]
+\begin{tikzpicture}
+\begin{axis}[
+    legend pos=south west,
+    title={Leistung der weißen LED in Abhängigkeit der Stromstärke},
+    xlabel=Stromstärke in mA,
+    ylabel=Leistung in W,
+    width=0.9\textwidth,
+    height= 9cm,
+    xmin=0,
+    xmax=55,
+    grid=both,
+    ymin=0,
+    ymax=0.0045,
+    tick align=outside,
+    tickpos=left,
+    minor x tick num=3,
+    minor y tick num=4,
+    minor grid style={dotted,thin}
+]
+\addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y fixed relative=0.01, x dir=both, x fixed=0.05]
+table[x index={0},y index={1}] {data/1.txt};
+\addlegendentry{Leistung der LED auf der Photoplatte}
+\end{axis}
+\end{tikzpicture}
+\captionof{figure}{Gemessene Leistung der LED auf der Photoplatte in Abhängigkeit von der angelegten Stromstärke. Die angenommenen Fehler für die Stromstärke und die gemessene Leistung der LED betragen 0.05mA und 1 Prozent.}
+\end{figure}
+\end{center}
+
+Bis etwa 20mA nimmt die Lichtleistung der LED angenähert proportional zur angelegten Stromstärke zu, danach steigt die Leistung nur noch langsam. Dies entspricht auch den Erwartungen, da die annähernd proportionale Zunahme der Lichtleistung nur bei konstanter Halbleitertemperatur gilt, sich aber die Temperatur ab einer gewissen elektrischen Leistung erhöht. Der Wirkungsgrad der LED sinkt folglich mit zunehmender Temperatur, wodurch die Lichtausbeute in Relation zur Leistungsaufnahme je nach Kühlung mehr oder weniger stark abnimmt. Werden LEDs nicht ausreichend gekühlt bzw. mit einem dauerhaft zu hohem Strom betrieben, altern sie vorzeitig bis hin zum Totalausfall (wenn die Halbleitertemperatur 150$^{\circ}$C längere Zeit übersteigt).
 
 \section{Auslöschungsverhältniss der Linearpolarisatoren}
 Aus den für die beiden Linearpolarisatoren aufgenommenen Werten
