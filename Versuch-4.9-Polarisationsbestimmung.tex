@@ -275,7 +275,7 @@ Der physikalische Hintergrund dieser Messungen ist, dass wir durch die Einstellu
 
 Das Messen jeweils dreier Werte ist sinnvoll, um eine größere Genauigkeit zu erreichen. Durch das benutzen von 3 Messdaten kann der erwartete Fehler durch $\sqrt{3}$ geteilt werden.
 \section{Charakterisierung des Polarisationszustandes mit Hilfe des Stokes-Formalismus}
-Zur Herstellung linearer Polarisation stehen uns die bekannten Glan-Thomson-Polarisationsprismen zur Verfügung. Um daraus zirkular polarisiertes Licht zu erzeugen, bedienen wir uns des $\frac{\lambda}{4}$-Plättchens, dessen Verzögerung wir im vorigen Abschnitt für die jeweiligen Wellenlängen genau bestimmt haben. Im Folgenden werden alle Messungen mit Filter 4 (694,3nm) durchgeführt, das heißt $\delta = (0,639 \pm 9,556 \cdot 10^{-3}) \pi$. Zunächst messen wir ohne $\frac{\lambda}{4}$-Plättchen, richten den 1. Linearpolarisator in y-Richtung aus und nehmen die Leistung über der Winkelposition des zweiten Polarisators auf (wir verwenden also lediglich den Drehwinkelaufnehmer mit Linearpolarisator, der restliche Aufbau bleibt unangetastet). Wir erhalten folgende Verteilung:
+Zur Herstellung linearer Polarisation stehen uns die bekannten Glan-Thomson-Polarisationsprismen zur Verfügung. Um daraus zirkular polarisiertes Licht zu erzeugen, bedienen wir uns des $\frac{\lambda}{4}$-Plättchens, dessen Verzögerung wir im vorigen Abschnitt für die jeweiligen Wellenlängen genau bestimmt haben. Im Folgenden werden alle Messungen mit Filter 4 (694,3nm) durchgeführt. Zunächst messen wir ohne $\frac{\lambda}{4}$-Plättchen, richten den 1. Linearpolarisator in y-Richtung aus und nehmen die Leistung über der Winkelposition des zweiten Polarisators auf (wir verwenden also lediglich den Drehwinkelaufnehmer mit Linearpolarisator, der restliche Aufbau bleibt unangetastet). Wir erhalten folgende Verteilung:
 
 \begin{center}
 \begin{figure}[H]
@@ -655,7 +655,63 @@ Alternativ ist es möglich, dass die gemessenen Punkte nur nach einem linearen v
 
 
 \section{Charakterisierung des Polarisationszustandes mit Hilfe des Stokes-Formalismus}
-TODO: Berechnung der Stokes-Parameter. Wichtig: Benutzung der in Aufgabenteil d bestimmten, genaueren und von 90° abweichenden, verzögerung des $\frac{\lambda}{4}$ Plättchens. Was ergibt sich für den Aufbau der 3-D Brille?
+Aus den gewonnenen Verteilungen der Lichtleistung über dem Drehwinkel sollen nun die Stokes-Parameter berechnet werden, um die Polarisation klassifizieren zu können. Wir bedienen uns dazu des Müller-Matrix-Formalismus, wir multiplizieren also die Müller-Matrizen der verwendeten optischen Bauteile. Dies sind im Wesentlichen ein Verzögerungsplättchen, welches beim verwendenen Filter 4 (694,3nm) eine Phasenverschiebung von $115,08^\circ \pm 0,99^\circ$ verursacht und mit der x-Achse den Winkel $\beta$ einschließt (Der Winkel $\beta$ ist derjenige, der per Drehwinkelaufnehmer variiert wurde) und ein Glan-Thomson-Polarisator, der mit der x-Achse den Winkel $\alpha = 0$ einschließt. Die Multiplikation liefert die Intensität in Abhängigkeit des Winkels $\beta$ und der Phasenverschiebung $\delta$: 
+
+$$I_T(\beta, \delta) = \frac{1}{2} (S_0 + cos(2 \beta) (S_1 cos(2 \beta) + S_2 sin(2 \beta)) + cos(\delta) (S_2 cos(2 \beta) - S_1 sin(2 \beta)) - sin(2 \beta) \cdot S_3 sin(\delta))$$
+
+Es fällt auf, dass es sich um eine $2 \pi$-periodische Funktion handelt, d.h. wir können die Intensität als Fourierreihe darstellen: 
+
+$$I_T(\beta, \delta) = \frac{1}{2} [S_0 + \frac{1}{2} S_1 (1 + cos(\delta)) - S_3 sin(\delta) sin(2 \beta) + \frac{1}{2} S_1 (1 - cos(\delta)) cos(4 \beta) + \frac{1}{2} S_2 (1 - cos(\delta)) sin(4 \beta)]$$
+
+Mit den Fourierkoeffizienten $C0, C2, C4, S2, S4$ ergibt sich: 
+
+$$I_T(\beta) = C0 + C2 \cdot cos(2 \beta) + S2 \cdot sin (2 \beta) + C4 \cdot cos (4 \beta) + S4 \cdot sin (4 \beta)$$
+
+Dies bietet sich auch vor allem deshalb an, weil man nun die Darstellung diskretisieren kann, um die (ebenfalls diskreten) Messwerte zur Berechnung der Fourierkoeffizienten verwenden zu können:
+
+\begin{align*}
+ C0 &= \frac{1}{N} \sum_{i=1}^N I_{Ti},\\
+ C2 &= \frac{2}{N} \sum_{i=1}^N I_{Ti} cos(2 \beta_i),\\
+ C4 &= \frac{2}{N} \sum_{i=1}^N I_{Ti} cos(4 \beta_i),\\
+ S2 &= \frac{2}{N} \sum_{i=1}^N I_{Ti} sin(2 \beta_i),\\
+ S4 &= \frac{2}{N} \sum_{i=1}^N I_{Ti} sin(4 \beta_i)
+\end{align*}
+
+Der Index i repräsentiert den i-ten Messwert jeweils der Intensität und des Winkels, d.h. wir summieren in 72 Schritten die Messwerte auf und erhalten damit für jede der 4 Messaufbauten einen Satz von Fourierkoeffizienten,: 
+
+\begin{center}
+  \begin{tabular}{|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
+    \hline
+        Fourierkoeffizient & Messung 1 & Messung 2 & Messung 3 & Messung 4 \\ \hline
+        C0 & 0 & 0 & 0 & 0 \\ \hline
+        C2 & 0 & 0 & 0 & 0 \\ \hline
+        C4 & 0 & 0 & 0 & 0 \\ \hline
+        S2 & 0 & 0 & 0 & 0 \\ \hline
+        S4 & 0 & 0 & 0 & 0 \\ \hline
+	\end{tabular}
+\end{center}
+
+Aus den Fourierkoeffizienten lassen sich nun die gesuchten Stokes-Parameter wie folgt berechnen: 
+
+\begin{align*}
+ S_0 &= C0 - C4 \frac{1 + cos(\delta)}{1 - cos(\delta)},\\ 
+ S_1 &= C4 \frac{2}{1 - cos(\delta)},\\
+ S_2 &= S4 \frac{2}{1 - cos(\delta)},\\
+ S_3 &= \frac{-S2}{sin(\delta)} 
+\end{align*}
+
+Wir können also die erzeugten Polarisationszustände mit folgenden 4 Sätzen von Stokes-Parametern klassifizieren: 
+
+\begin{center}
+  \begin{tabular}{|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
+    \hline
+        Stokes-Parameter & Messung 1 & Messung 2 & Messung 3 & Messung 4 \\ \hline
+        $S_0$ & 0 & 0 & 0 & 0 \\ \hline
+        $S_1$ & 0 & 0 & 0 & 0 \\ \hline
+        $S_2$ & 0 & 0 & 0 & 0 \\ \hline
+        $S_3$ & 0 & 0 & 0 & 0 \\ \hline
+\end{tabular}
+\end{center}
 
 \section{P-I-Kennlinie der VCSEL}
 Bis zu einer angelegten Stromstärke von etwa 3mA steigt die Leistung der VCSEL nur sehr langsam an. Dies kann dadurch erklärt werden, dass im Vergleich zu Absorption in der VCSEL die Verstärkung im Resoatur nur gering ist, also kaum oder keine Verstärkung stattfindet. Die anschließende annährend linear ansteigende Leistung verhält sich wie in einem typischen Laserresonator, wobei im Gegensatz zu makroskopischen resonatoren der Anstieg der Leistung mit zunehmender Stromstärke wieder abnimmt. Dies ist dadurch zu erklären, dass auf Grund der geringen Länge der einzelnen Resonatorschichten bereits kleine Längenänderungen im Resonator die Verstärkung negativ beinträchtigen kann.
