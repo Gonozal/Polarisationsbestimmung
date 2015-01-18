@@ -459,36 +459,6 @@ Analog zur Aufnahme der P-I-Kennlinie der LED nehmen wir ebenfalls die P-I-Kennl
 \label{PI-Kennlinie-VCSEL}
 \end{figure}
 
-\begin{center}
-\begin{figure}[h]
-\begin{tikzpicture}
-\begin{axis}[
-    legend pos=south east,
-    title={Leistung der VCSEL in abhängigkeit der Stromstärke},
-    xlabel=Stromstärke in mA,
-    ylabel=Leistung in W,
-    width=0.9\textwidth,
-    height= 9cm,
-    xmin=0,
-    xmax=13,
-    grid=both,
-    ymin=0,
-    ymax=0.0022,
-    tick align=outside,
-    tickpos=left,
-    minor x tick num=3,
-    minor y tick num=4,
-    minor grid style={dotted,thin}
-]
-\addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y fixed relative=0.01, x dir=both, x fixed=0.05]
-table[x index={0},y index={1}] {data/e-P-I.txt};
-\addlegendentry{Leistung der VCSEL auf der Photoplatte}
-\end{axis}
-\end{tikzpicture}
-\captionof{figure}{Gemessene Leistung der VCSEL auf der Photoplatte in Abhängigkeit von der angelegten Stromstärke. Die angenommenen Fehler für die Stromstärke und die gemessene Leistung der VCSEL betragen 0.05mA und 1 Prozent.}
-\end{figure}
-\end{center}
-
 Analog zu Abschnitt 3.1 wurde als Fehler für die Stromstärke 0.05mA und als Fehler für die aufgenommene Leistung 1 Prozent angenommen.
 
 \section{Polarisationszustand des VCSELs in Abhägigkeit des Stroms}
@@ -721,10 +691,6 @@ table[x index={0}, y index={1}, y error index={2}] {data/delta.txt};
 \end{figure}
 \end{center}
 \FloatBarrier
-Auf Grund der relativ geringen Anzahl an Messpunkten ist der errechnete Fehler relativ groß. Rechnerisch ergibt sich für die Fitgerade: $f(x) = (0,1529 \pm 0,035) \cdot x + 9,7484 \pm 20,6850$.
-
-Alternativ ist es möglich, dass die gemessenen Punkte nur nach einem linearen verlauf aussehen, in wirklichkeit allerdings eine komplexere Funktion zugrunde liegt.
-
 
 \section{Charakterisierung des Polarisationszustandes mit Hilfe des Stokes-Formalismus}
 
@@ -780,11 +746,43 @@ Wir können also die erzeugten Polarisationszustände mit 4 Sätzen von Stokes-P
 
 Die genauen Messaufbauten sind unter 3.4 näher beschrieben.
 
+Als Fehler für $\alpha$ und $\beta_0$ haben wir jewals 1 Grad angenommen, der Fehler für $\delta$ wurde aus Abschnitt 4.3 übernommen.
+
 Damit erschließt sich auch die Funktionsweise der 3D-Brille:
 Sie ist (in Blickrichtung) aus einem Linearpolarisator gefolgt von einer Verzögerungsplatte aufgebaut. Das von der Leinwand kommende, links- und rechtszirkular polarisierte Licht wird so zuerst in 2 um 90 Grad gedrehte linear polarisierte Anteile aufgespalten und überlagert sich anschließend wieder im Auge. Die beiden unterschiedlich zirkular polarisierten Anteile stellen verschiedene Bildebenen dar, die leicht zueinander verschoben sind, wodurch der 3-D-Eindruck entsteht.
 
 \section{P-I-Kennlinie der VCSEL}
 Bis zu einer angelegten Stromstärke von etwa 3 mA steigt die Leistung des VCSELs nur sehr langsam an. Dies kann dadurch erklärt werden, dass im Vergleich zu Absorption im VCSEL die Verstärkung im Resonator nur gering ist, also kaum oder keine Verstärkung stattfindet. Die anschließende annähernd linear ansteigende Leistung verhält sich wie in einem typischen Laserresonator, wobei im Gegensatz zu makroskopischen Resonatoren der Anstieg der Leistung mit zunehmender Stromstärke wieder abnimmt. Dies ist dadurch zu erklären, dass aufgrund der geringen Länge der einzelnen Resonatorschichten bereits kleine Längenänderungen im Resonator die Verstärkung beeinträchtigen kann.
+
+\begin{center}
+\begin{figure}[h]
+\begin{tikzpicture}
+\begin{axis}[
+    legend pos=south east,
+    title={Leistung der VCSEL in abhängigkeit der Stromstärke},
+    xlabel=Stromstärke in mA,
+    ylabel=Leistung in W,
+    width=0.9\textwidth,
+    height= 9cm,
+    xmin=0,
+    xmax=13,
+    grid=both,
+    ymin=0,
+    ymax=0.0022,
+    tick align=outside,
+    tickpos=left,
+    minor x tick num=3,
+    minor y tick num=4,
+    minor grid style={dotted,thin}
+]
+\addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y fixed relative=0.01, x dir=both, x fixed=0.05]
+table[x index={0},y index={1}] {data/e-P-I.txt};
+\addlegendentry{Leistung der VCSEL auf der Photoplatte}
+\end{axis}
+\end{tikzpicture}
+\captionof{figure}{Gemessene Leistung der VCSEL auf der Photoplatte in Abhängigkeit von der angelegten Stromstärke. Die angenommenen Fehler für die Stromstärke und die gemessene Leistung der VCSEL betragen 0.05mA und 1 Prozent.}
+\end{figure}
+\end{center}
 
 Im Bezug auf den Laserschutz macht die aufgenommene Leistung von wenigen Milliwatt das Tragen von Schutzbrillen erforderlich, besondere Vorsichtsmaßnahmen, um nicht mit dem Strahl in Kontakt zu kommen, müssen jedoch nicht getroffen werden.
 
@@ -807,6 +805,8 @@ Mit Hilfe des bereits in Abschnitt 4.4 beschriebenen Verfahrens lässt sich aus 
         $12,0\pm 0,05 $ & $1$ & $-0,7794 \pm 0,0315$ & $0,3590 \pm 0,0612$ & $-0,0055 \pm 0,0000$ & $0,8582 \pm 0,0433$ \\ \hline
 	\end{tabular}
 \end{center}
+
+Auch hier haben wir als Fehler für $\alpha$ und $\beta_0$ haben wir jewals 1 Grad angenommen, der Fehler für $\delta$ war vorgegeben.
 
 Offensichtlich steigt der Grad der Polarisation zu Beginn stark an und erreicht dann von 4 mA bis etwa 10 mA ein Plateau mit einem Maximum bei 8 mA. Dies lässt sich durch thermische Ausdehnung im Laserresonator erklären. Offensichtlich scheint die Temperatur, welche in der Nähe von 8 mA im VCSEL vorliegt, ideal für eine Polarisation des Lichts zu sein. Da die thermische Ausdehnung bei steigender Stromstärke noch weiter steigt, nimmt die Polarisation bei höheren Stromstärken wieder ab.
 
