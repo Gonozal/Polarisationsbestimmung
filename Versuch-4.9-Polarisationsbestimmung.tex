@@ -314,7 +314,7 @@ Wir erhalten folgende Verteilung:
     xlabel=Drehwinkel in Grad,
     ylabel=Lichtleistung in W,
     width=0.9\textwidth,
-    height= 9cm,
+    height=9cm,
     xmin=0,
     xmax=360,
     grid=both,
@@ -329,14 +329,14 @@ Wir erhalten folgende Verteilung:
 ]
 \addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y fixed relative = 0.01, x dir=both, x fixed = 0]
 table[x index={0},y index={1}] {data/d-lin-y.txt};
-\addlegendentry{ohne $\frac{\lambda}{4}$-Plättchen}
+\addlegendentry{In y-Richtung polarisiertes Licht}
 \end{axis}
 \end{tikzpicture}
 \captionof{figure}{Linear in y-Richtung polarisiertes Licht}
 \end{figure}
 \end{center}
 
-Nun wird der 1. Polarisator um 45$^\circ$ gedreht und  die Lichtleistung über der Winkelposition des $\frac{\lambda}{4}$-Plättchens aufgenommen.
+Anschließend wird der 1. Polarisator um 45$^\circ$ gedreht und die Lichtleistung erneut über der Winkelposition des $\frac{\lambda}{4}$-Plättchens aufgenommen.
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=150mm]{img/skizzen/versuch_34_2.jpg}
@@ -352,7 +352,7 @@ Nun wird der 1. Polarisator um 45$^\circ$ gedreht und  die Lichtleistung über d
     xlabel=Drehwinkel in Grad,
     ylabel=Lichtleistung in W,
     width=0.9\textwidth,
-    height= 9cm,
+    height=9cm,
     xmin=0,
     xmax=360,
     grid=both,
@@ -367,10 +367,9 @@ Nun wird der 1. Polarisator um 45$^\circ$ gedreht und  die Lichtleistung über d
 ]
 \addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y fixed relative = 0.01, x dir=both, x fixed = 0]
 table[x index={0},y index={1}] {data/d-45.txt};
-\addlegendentry{mit $\frac{\lambda}{4}$-Plättchen}
+\addlegendentry{45° zur y-Richtung polarisiertes Licht}
 \end{axis}
 \end{tikzpicture}
-\captionof{figure}{+45 Grad}
 \end{figure}
 \end{center}
 
@@ -388,11 +387,11 @@ Es ergeben sich folgende Messwerte:
 \begin{tikzpicture}
 \begin{axis}[
     legend pos=south west,
-    title={Lichtleistung über dem Drehwinkel},
+    title={Lichtleistung über dem Drehwinkel (Zirkular polarisiertes Licht)},
     xlabel=Drehwinkel in Grad,
     ylabel=Lichtleistung in W,
     width=0.9\textwidth,
-    height= 9cm,
+    height=9cm,
     xmin=0,
     xmax=360,
     grid=both,
@@ -500,7 +499,6 @@ Analog zur Aufnahme der P-I-Kennlinie der LED nehmen wir ebenfalls die P-I-Kennl
 \centering
 \includegraphics[width=150mm]{img/skizzen/versuch_35.jpg}
 \caption{Versuchsaufbau zur Bestimmung der P-I-Kennlinie der VCSEL}
-\label{PI-Kennlinie-VCSEL}
 \end{figure}
 
 Analog zu Abschnitt 3.1 wurde als Fehler für die Stromstärke 0.05mA und als Fehler für die aufgenommene Leistung 1 Prozent angenommen.
@@ -805,7 +803,7 @@ Bis zu einer angelegten Stromstärke von etwa 3 mA steigt die Leistung des VCSEL
 \begin{tikzpicture}
 \begin{axis}[
     legend pos=south east,
-    title={Leistung der VCSEL in abhängigkeit der Stromstärke},
+    title={Leistung der VCSEL in Abhängigkeit der Stromstärke},
     xlabel=Stromstärke in mA,
     ylabel=Leistung in W,
     width=0.9\textwidth,
@@ -853,11 +851,103 @@ Mit Hilfe des bereits in Abschnitt 4.4 beschriebenen Verfahrens lässt sich aus 
 	\end{tabular}
 \end{center}
 
-Auch hier haben wir als Fehler für $\alpha$ und $\beta_0$ jeweils 1 Grad angenommen, der Fehler für $\delta$ war vorgegeben.
+Auch hier haben wir als Fehler für $\alpha$ und $\beta_0$ jeweils 1 Grad angenommen, der Fehler für $\delta$ war vorgegeben. Grafisch veranschaulicht sind die Stokes-Parameter in folgenden Diagrammen:
 
-Offensichtlich steigt der Grad der Polarisation zu Beginn stark an und erreicht dann von 4 mA bis etwa 10 mA ein Plateau mit einem Maximum bei 8 mA. Dies lässt sich durch thermische Ausdehnung im Laserresonator erklären. Offensichtlich scheint die Temperatur, welche in der Nähe von 8 mA im VCSEL vorliegt, ideal für eine Polarisation des Lichts zu sein. Da die thermische Ausdehnung bei steigender Stromstärke noch weiter steigt, nimmt die Polarisation bei höheren Stromstärken wieder ab.
+\begin{center}
+\begin{figure}[H]
+\begin{tikzpicture}
+\begin{axis}[
+    legend pos=south east,
+    title={$S_1$ in Abhängigkeit der Stromstärke},
+    xlabel=Stromstärke in mA,
+    ylabel=$S_1$,
+    width=0.9\textwidth,
+    height=8.5cm,
+    xmin=0,
+    xmax=13,
+    grid=both,
+    ymin=-1,
+    ymax=0,
+    tick align=outside,
+    tickpos=left,
+    minor x tick num=3,
+    minor y tick num=4,
+    minor grid style={dotted,thin},
+    seperators
+]
+\addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y fixed relative=0.04, x dir=both, x fixed=0.05]
+table[x index={0},y index={1}] {data/S1.txt};
+%\addlegendentry{Stokes-Parameter $S_1$ in Abhängigkeit des Stroms}
+\end{axis}
+\end{tikzpicture}
+\captionof{figure}{Berechneter Wert $S_1$ in Abhängigkeit der angelegten Stromstärke. Die angenommenen Fehler für $\alpha$ und $\beta_0$ betragen je 1$^{\circ}$, der für den Strom beträgt 0,05 mA}
+\end{figure}
+\end{center}
 
-Die gemessenen Werte zeigen eine eindeutige lineare Polarisation des emittierten Lichts, der zirkular polarisierte Anteil ist durchweg vernachlässigbar.
+\begin{center}
+\begin{figure}[H]
+\begin{tikzpicture}
+\begin{axis}[
+    legend pos=south east,
+    title={$S_2$ in Abhängigkeit der Stromstärke},
+    xlabel=Stromstärke in mA,
+    ylabel=$S_2$,
+    width=0.9\textwidth,
+    height=8.5cm,
+    xmin=0,
+    xmax=13,
+    grid=both,
+    ymin=0,
+    ymax=0.7,
+    tick align=outside,
+    tickpos=left,
+    minor x tick num=3,
+    minor y tick num=4,
+    minor grid style={dotted,thin},
+    seperators
+]
+\addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y fixed relative=0.04, x dir=both, x fixed=0.05]
+table[x index={0},y index={1}] {data/S2.txt};
+%\addlegendentry{Stokes-Parameter $S_2$ in Abhängigkeit des Stroms}
+\end{axis}
+\end{tikzpicture}
+\captionof{figure}{Berechneter Wert $S_2$ in Abhängigkeit der angelegten Stromstärke. Die angenommenen Fehler für $\alpha$ und $\beta_0$ betragen je 1$^{\circ}$, der für den Strom beträgt 0,05 mA}
+\end{figure}
+\end{center}
+
+\begin{center}
+\begin{figure}[H]
+\begin{tikzpicture}
+\begin{axis}[
+    legend pos=south east,
+    title={$S_3$ in Abhängigkeit der Stromstärke},
+    xlabel=Stromstärke in mA,
+    ylabel=$S_3$,
+    width=0.9\textwidth,
+    height=8.5cm,
+    xmin=0,
+    xmax=13,
+    grid=both,
+    ymin=-0.01,
+    ymax=0,
+    tick align=outside,
+    tickpos=left,
+    minor x tick num=3,
+    minor y tick num=4,
+    minor grid style={dotted,thin},
+    seperators
+]
+\addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y fixed relative=0, x dir=both, x fixed=0.05]
+table[x index={0},y index={1}] {data/S3.txt};
+%\addlegendentry{Stokes-Parameter $S_3$ in Abhängigkeit des Stroms}
+\end{axis}
+\end{tikzpicture}
+\captionof{figure}{Berechneter Wert $S_3$ in Abhängigkeit der angelegten Stromstärke. Die angenommenen Fehler für $\alpha$ und $\beta_0$ betragen je 1$^{\circ}$, der für den Strom beträgt 0,05 mA}
+\end{figure}
+\end{center}
+
+Der Polarisationsgrad lässt sich ebenfalls anhand einer Grafik sofort ablesen: 
+
 \begin{center}
 \begin{figure}[H]
 \begin{tikzpicture}
@@ -878,17 +968,22 @@ Die gemessenen Werte zeigen eine eindeutige lineare Polarisation des emittierten
     minor x tick num=3,
     minor y tick num=4,
     minor grid style={dotted,thin},
+    seperators,
     seperators
 ]
 \addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y explicit, x dir=both, x explicit]
 table[x index={0}, x error index={1}, y index={2}, y error index={3}] {data/f-stokes.txt};
-\addlegendentry{Leistung der LED auf der Photoplatte}
+%\addlegendentry{Leistung der LED auf der Photoplatte}
 \end{axis}
 \end{tikzpicture}
-\captionof{figure}{Gemessene Leistung der LED auf der Photoplatte in Abhängigkeit von der angelegten Stromstärke. Die angenommenen Fehler für die Stromstärke und die gemessene Leistung der LED betragen 0.05mA und 1 Prozent.}
+\captionof{figure}{Polarisationsgrad in Abhängigkeit der Stromstärke}
 \end{figure}
 \end{center}
 \FloatBarrier 
+
+Offensichtlich steigt der Grad der Polarisation zu Beginn stark an und erreicht dann von 4 mA bis etwa 10 mA ein Plateau mit einem Maximum bei 8 mA. Dies lässt sich durch thermische Ausdehnung im Laserresonator erklären. Offensichtlich scheint die Temperatur, welche in der Nähe von 8 mA im VCSEL vorliegt, ideal für eine Polarisation des Lichts zu sein. Da die thermische Ausdehnung bei steigender Stromstärke noch weiter steigt, nimmt die Polarisation bei höheren Stromstärken wieder ab.
+
+Die gemessenen Werte zeigen eine eindeutige lineare Polarisation des emittierten Lichts, der zirkular polarisierte Anteil ist durchweg vernachlässigbar.
 
 \chapter{Fazit}
 In diesem Versuch gelang es uns, verschiedene Polarisationsarten mit Hilfe des Stokes-Formalismus zu untersuchen. So wurden in Abschnitt 4.4 sowohl linear polarisiertes Licht in y-Richtung als auch zirkular polarisiertes Licht untersucht. Ebenfalls linear polarisiertes Licht und die Abhängigkeit des Polarisationsgrads eines VCSELs von der angelegten Stromstärke wurde in Abschnitt 4.6 genauer untersucht. Auffällig dabei war, dass bei einer angelegten Stromstärke von 8 mA beinahe vollständige Polarisation des emittierten Lichts erreicht wurde.
