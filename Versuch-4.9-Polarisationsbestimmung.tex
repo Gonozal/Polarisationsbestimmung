@@ -18,9 +18,11 @@
 % \usepackage[square]{natbib}
 % Paket zum Plotten von Datensätzen
 \usepackage{pgfplots}
+
 \pgfkeys{%
   /pgfplots/PolarStyle/.style={%
     ylabel=Leistung in W,
+    scaled y ticks = false,
     width=0.33\linewidth,
     height=0.33\linewidth,
     scale only axis,
@@ -29,6 +31,14 @@
     tickpos=left,
     minor x tick num=2,
     minor y tick num=1
+  }
+}
+
+
+
+\pgfkeys{%
+  /pgfplots/seperators/.style={%
+    /pgf/number format/use comma
   }
 }
 
@@ -161,7 +171,7 @@ Zuerst nehmen wir eine P-I-Kennlinie der weißen LED auf. Das heißt, wir messen
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=150mm]{img/skizzen/versuch_a.jpg}
-\caption{Versuchsaufbau zur Bestiimung der P-I-Kennlinie der LED}
+\caption{Versuchsaufbau zur Bestimmung der P-I-Kennlinie der LED}
 \label{PI-Kennlinie-LED}
 \end{figure}
 
@@ -230,20 +240,20 @@ Bei den verwendeten Farbfiltern handelt es sich um Interferenzfilter, das heißt
 	\end{tabular}
 \end{center}
 
-Aus den Differenzen jeweils zweier Messwerte und anschließender Mittelwertbildung können die Kalibrierungsfaktoren mit einem fehler von etwa 0,04 ($\frac{0.06}{\sqrt{2}}$) bestimmt werden.
+Aus den Differenzen jeweils zweier Messwerte und anschließender Mittelwertbildung können die Kalibrierungsfaktoren mit einem Fehler von etwa 0,04 ($\frac{0,06}{\sqrt{2}}$) bestimmt werden.
 
 \begin{figure}[h]
   \begin{center}
     \begin{tabular}{|c|c|}
       \hline
       Wellenlänge des verwendeten Filters & Kalibrierungsfaktor \\ \hline
-      488,0 nm                               & 11,32               \\ \hline
-      543,5 nm                              & 12,74               \\ \hline
-      633,0 nm                              & 15,09               \\ \hline
-      694,3 nm                              & 16,58               \\ \hline
+      488,0 nm                            & 11,32               \\ \hline
+      543,5 nm                            & 12,74               \\ \hline
+      633,0 nm                            & 15,09               \\ \hline
+      694,3 nm                            & 16,58               \\ \hline
     \end{tabular}
   \end{center}
-  \caption{Kalibrierungsfaktoren in $\frac{Einheiten}{2\pi}$für den Babinet-Soleil-Kompensator für verschiedene Wellenlängen}
+  \caption{Kalibrierungsfaktoren in $\frac{Einheiten}{2\pi}$für den Babinet-Soleil-Kompensator}
 \end{figure}
 
 
@@ -267,27 +277,33 @@ Dies liefert uns folgende Werte:
 	\end{tabular}
 \end{center}
 
-Zieht man nun die zuvor ermittelten Werte von denen mit $\frac{\lambda}{4}$-Plättchen ab, erhält man die einen durch das Plättchen verursachten Offset in den von dem Babinet-Soleil-Kompensator abgelesenen Einheiten. Teilt man nun durch die zuvor bestimmten Kalibrierungsfaktoren, ergibt sich die durch das $\frac{\lambda}{4}$-Plättchen verursachte Phasenverschiebung. Anschließend kann zur Reduktion des Fehlers über die 3 errechneten Werte gemittelt werden.
+Zieht man nun die zuvor ermittelten Werte von denen mit $\frac{\lambda}{4}$-Plättchen ab, erhält man einen durch das Plättchen verursachten Offset in den von dem Babinet-Soleil-Kompensator abgelesenen Einheiten. Teilt man nun durch die zuvor bestimmten Kalibrierungsfaktoren, ergibt sich die durch das $\frac{\lambda}{4}$-Plättchen verursachte Phasenverschiebung. Anschließend kann zur Reduktion des Fehlers über die 3 errechneten Werte gemittelt werden.
 
 An Hand dieser gemittelten Werte ergibt sich für die Phasenverzögerung der verwendeten Verzögerungsplatte:
 
-\begin{figure}[h]
-  \begin{center}
-    \begin{tabular}{|c|c|}
-      \hline
-          Wellenlänge des verwendeten Filters & Phasenverzögerung im $\frac{\lambda}{4}$-Plättchen \\ \hline
-          488,0 m                              & $(0,5177 \pm 0,0073)\pi$                           \\ \hline
-          543,5 nm                              & $(0,5149 \pm 0,0065)\pi$                           \\ \hline
-          633,0 nm                              & $(0,4957 \pm 0,0055)\pi$                           \\ \hline
-          694,3 nm                              & $(0,4849 \pm 0,0050)\pi$                           \\ \hline
-    \end{tabular}
-    \caption{Kalibrierungsfaktoren in $\frac{Einheiten}{2\pi}$für den Babinet-Soleil-Kompensator für verschiedene Wellenlängen}
-  \end{center}
-\end{figure}
+\begin{center}
+  \begin{tabular}{|c|c|}
+    \hline
+        Wellenlänge des verwendeten Filters & Phasenverzögerung im $\frac{\lambda}{4}$-Plättchen \\ \hline
+        488,0 m                              & $(0,5177 \pm 0,0073)\pi$                           \\ \hline
+        543,5 nm                              & $(0,5149 \pm 0,0065)\pi$                           \\ \hline
+        633,0 nm                              & $(0,4957 \pm 0,0055)\pi$                           \\ \hline
+        694,3 nm                              & $(0,4849 \pm 0,0050)\pi$                           \\ \hline
+  \end{tabular}
+\end{center}
+\FloatBarrier
 
 
 \section{Charakterisierung des Polarisationszustandes mit Hilfe des Stokes-Formalismus}
-Zur Herstellung linearer Polarisation stehen uns die bekannten Glan-Thomson-Polarisationsprismen zur Verfügung. Um daraus zirkular polarisiertes Licht zu erzeugen, bedienen wir uns des $\frac{\lambda}{4}$-Plättchens, dessen Verzögerung wir im vorigen Abschnitt für die jeweiligen Wellenlängen genau bestimmt haben. Im Folgenden werden alle Messungen mit Filter 4 (694,3 nm) durchgeführt. Zunächst messen wir ohne $\frac{\lambda}{4}$-Plättchen, richten den ersten Linearpolarisator in y-Richtung aus und nehmen die Leistung über der Winkelposition des Drehwinkelaufnehmers mit $\frac{\lambda}{4}$-Plättchen auf (wir verwenden also lediglich den Drehwinkelaufnehmer mit Verzögerungsplatte, der restliche Aufbau bleibt unangetastet). Wir erhalten folgende Verteilung:
+Zur Herstellung linearer Polarisation stehen uns die bekannten Glan-Thomson-Polarisationsprismen zur Verfügung. Um daraus zirkular polarisiertes Licht zu erzeugen, bedienen wir uns des $\frac{\lambda}{4}$-Plättchens, dessen Verzögerung wir im vorigen Abschnitt für die jeweiligen Wellenlängen genau bestimmt haben. Im Folgenden werden alle Messungen mit Filter 4 (694,3 nm) durchgeführt. Zunächst messen wir ohne $\frac{\lambda}{4}$-Plättchen, richten den ersten Linearpolarisator in y-Richtung aus und nehmen die Leistung über der Winkelposition des Drehwinkelaufnehmers mit $\frac{\lambda}{4}$-Plättchen auf (wir verwenden also lediglich den Drehwinkelaufnehmer mit Verzögerungsplatte, der restliche Aufbau bleibt unangetastet).
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=150mm]{img/skizzen/versuch_34_1.jpg}
+\caption{Versuchsaufbau mit in y-Richtung linear polarisiertem Licht}
+\end{figure}
+
+Wir erhalten folgende Verteilung:
 
 \begin{center}
 \begin{figure}[H]
@@ -303,12 +319,13 @@ Zur Herstellung linearer Polarisation stehen uns die bekannten Glan-Thomson-Pola
     xmax=360,
     grid=both,
     ymin=0,
-    ymax=0.000007,
+    ymax=0.000006,
     tick align=outside,
     tickpos=left,
     minor x tick num=3,
     minor y tick num=4,
-    minor grid style={dotted,thin}
+    minor grid style={dotted,thin},
+    seperators
 ]
 \addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y fixed relative = 0.01, x dir=both, x fixed = 0]
 table[x index={0},y index={1}] {data/d-lin-y.txt};
@@ -319,7 +336,12 @@ table[x index={0},y index={1}] {data/d-lin-y.txt};
 \end{figure}
 \end{center}
 
-Nun wird der Drehwinkelaufnehmer mit $\frac{\lambda}{4}$-Plättchen vor den letzten Polarisator montiert, der 1. Polarisator um 45$^\circ$ gedreht und nun die Lichtleistung über der Winkelposition des $\frac{\lambda}{4}$-Plättchens aufgenommen. 
+Nun wird der 1. Polarisator um 45$^\circ$ gedreht und  die Lichtleistung über der Winkelposition des $\frac{\lambda}{4}$-Plättchens aufgenommen.
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=150mm]{img/skizzen/versuch_34_2.jpg}
+\caption{Versuchsaufbau mit um 45° zur y-Richtung gedrehtem, linear polarisiertem Licht}
+\end{figure}
 
 \begin{center}
 \begin{figure}[H]
@@ -334,13 +356,14 @@ Nun wird der Drehwinkelaufnehmer mit $\frac{\lambda}{4}$-Plättchen vor den letz
     xmin=0,
     xmax=360,
     grid=both,
-    ymin=0,
-    ymax=0.00001,
+    ymin=0.000002,
+    ymax=0.000009,
     tick align=outside,
     tickpos=left,
     minor x tick num=3,
     minor y tick num=4,
-    minor grid style={dotted,thin}
+    minor grid style={dotted,thin},
+    seperators
 ]
 \addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y fixed relative = 0.01, x dir=both, x fixed = 0]
 table[x index={0},y index={1}] {data/d-45.txt};
@@ -351,7 +374,14 @@ table[x index={0},y index={1}] {data/d-45.txt};
 \end{figure}
 \end{center}
 
-Nun untersuchen wir noch zirkular polarisiertes Licht. TODO: Aufbau. Es ergeben sich folgende Messwerte:
+Nun untersuchen wir noch zirkular polarisiertes Licht, indem wir ein $\frac{\lambda}{4}$-Plättchen gemäß folgender Skizze hinter den vorderen Linearpolarisator einfügen. 
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=150mm]{img/skizzen/versuch_34_3.jpg}
+\caption{Versuchsaufbau mit zirkular polarisiertem Licht}
+\end{figure}
+
+Es ergeben sich folgende Messwerte:
 
 \begin{center}
 \begin{figure}[H]
@@ -367,12 +397,13 @@ Nun untersuchen wir noch zirkular polarisiertes Licht. TODO: Aufbau. Es ergeben 
     xmax=360,
     grid=both,
     ymin=0,
-    ymax=0.00001,
+    ymax=0.000012,
     tick align=outside,
     tickpos=left,
     minor x tick num=3,
     minor y tick num=4,
-    minor grid style={dotted,thin}
+    minor grid style={dotted,thin},
+    seperators
 ]
 \addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y fixed relative = 0.01, x dir=both, x fixed = 0]
 table[x index={0},y index={1}] {data/d-zirkular.txt};
@@ -386,6 +417,12 @@ table[x index={0},y index={1}] {data/d-zirkular.txt};
 
 Zusätzlich steht uns eine 3D-Kinobrille zur Verfügung, deren optische Eigenschaften genauer untersucht werden sollen. Dazu montieren wir sie auf den Reiter zwischen Linse und Drehwinkelaufnehmer, zunächst so, dass das Licht der LED von innen auf das Brillenglas fällt, das Licht also in Blickrichtung des Brillenträgers propagiert. Wir messen wieder die Lichtleistung über der Winkelposition des Drehwinkelaufnehmers mit $\frac{\lambda}{4}$-Plättchen.
 
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=150mm]{img/skizzen/versuch_34_4.jpg}
+\caption{Versuchsaufbau mit 3D-Brille (Strahlverlauf wie von einer Leinwand zur Brille)}
+\end{figure}
+
 \begin{center}
 \begin{figure}[H]
 \begin{tikzpicture}
@@ -405,7 +442,8 @@ Zusätzlich steht uns eine 3D-Kinobrille zur Verfügung, deren optische Eigensch
     tickpos=left,
     minor x tick num=3,
     minor y tick num=4,
-    minor grid style={dotted,thin}
+    minor grid style={dotted,thin},
+    seperators
 ]
 \addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y fixed relative = 0.01, x dir=both, x fixed = 0]
 table[x index={0},y index={1}] {data/d-brille-1-licht in sichtrichtung.txt};
@@ -417,6 +455,11 @@ table[x index={0},y index={1}] {data/d-brille-1-licht in sichtrichtung.txt};
 \end{center}
 
 Nun wiederholen wir dieselbe Messung, jedoch drehen wir die Brille um, so dass das Licht in entgegengesetzter Richtung auf das Brillenglas fällt (entgegen der Blickrichtung des Brillenträgers).
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=150mm]{img/skizzen/versuch_34_5.jpg}
+\caption{Versuchsaufbau mit 3D-Brille (Strahlverlauf wie von einem Zuschauer durch die Brille zur Leinwand)}
+\end{figure}
 
 \begin{center}
 \begin{figure}[H]
@@ -431,13 +474,14 @@ Nun wiederholen wir dieselbe Messung, jedoch drehen wir die Brille um, so dass d
     xmin=0,
     xmax=360,
     grid=both,
-    ymin=0,
+    ymin=0.000007,
     ymax=0.000016,
     tick align=outside,
     tickpos=left,
     minor x tick num=3,
     minor y tick num=4,
-    minor grid style={dotted,thin}
+    minor grid style={dotted,thin},
+    seperators
 ]
 \addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y fixed relative = 0.01, x dir=both, x fixed = 0]
 table[x index={0},y index={1}] {data/d-brille-2.txt};
@@ -450,12 +494,12 @@ table[x index={0},y index={1}] {data/d-brille-2.txt};
 
 \section{P-I-Kennlinie der VCSEL}
 
-Analog zur Aufnahme der P-I-Kennlinie der LED nehmen wir ebenfalls die P-I-Kennlinie des VCSELs auf. Hierzu wird im Aufbau die LED mit dem VCSEL ausgetauscht und auf die erste Linse zur Kollimation des Lichts verzichtet, da der VCSEL bereits kollimiertes licht emittiert.
+Analog zur Aufnahme der P-I-Kennlinie der LED nehmen wir ebenfalls die P-I-Kennlinie des VCSELs auf. Hierzu wird im Aufbau die LED mit dem VCSEL ausgetauscht und auf die erste Linse zur Kollimation des Lichts verzichtet, da der VCSEL bereits kollimiertes Licht emittiert.
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=150mm]{img/skizzen/versuch_a.jpg}
-\caption{Versuchsaufbau zur Bestiimung der P-I-Kennlinie der VCSEL}
+\includegraphics[width=150mm]{img/skizzen/versuch_35.jpg}
+\caption{Versuchsaufbau zur Bestimmung der P-I-Kennlinie der VCSEL}
 \label{PI-Kennlinie-VCSEL}
 \end{figure}
 
@@ -611,14 +655,15 @@ Die unter Abschnitt 3.2 aufgelisteten Messwerte ergeben linear aufgetragen folge
     tickpos=left,
     minor x tick num=3,
     minor y tick num=4,
-    minor grid style={dotted,thin}
+    minor grid style={dotted,thin},
+    seperators
 ]
 \addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y fixed relative=0.01, x dir=both, x fixed=0.05]
 table[x index={0},y index={1}] {data/1.txt};
-\addlegendentry{Leistung der LED auf der Photoplatte}
+\addlegendentry{Leistung der VCSEL auf der Photoplatte}
 \end{axis}
 \end{tikzpicture}
-\captionof{figure}{Gemessene Leistung der LED auf der Photoplatte in Abhängigkeit von der angelegten Stromstärke. Die angenommenen Fehler für die Stromstärke und die gemessene Leistung der LED betragen 0.05 mA und 1 Prozent.}
+\captionof{figure}{Gemessene Leistung der VCSEL auf der Photoplatte in Abhängigkeit von der angelegten Stromstärke. Die angenommenen Fehler für die Stromstärke und die gemessene Leistung der LED betragen 0.05 mA und 1 Prozent.}
 \end{figure}
 \end{center}
 
@@ -649,13 +694,13 @@ berechnen. Somit ist das Auslöschungsverhältnis
 
 Aus den gemessenen Daten ergeben sich nach Mittelung folgende Verteilung für die genaue Verzögerung des Verzögerungsplättchens:
 \begin{center}
-  \begin{tabular}{|c|c|}
+  \begin{tabular}{|c|c|c|}
     \hline
-        Wellenlänge des einfallenden Lichts in nm & Phasenverschiebung in Grad \\ \hline
-        $488,0 \pm 6$                             & $93,18 \pm 1,31$           \\ \hline
-        $543,5 \pm 6$                             & $92,68 \pm 1,17$           \\ \hline
-        $633,0 \pm 6$                             & $89,22 \pm 0,98$           \\ \hline
-        $694,3 \pm 6$                             & $87,28 \pm 0,89$           \\ \hline
+        Wellenlänge des einfallenden Lichts in nm & Kalibrierungsfaktor & Phasenverschiebung in Grad \\ \hline
+        $488,0 \pm 6$                             & $11,32 \pm 0,04$              & $93,18 \pm 1,31$           \\ \hline
+        $543,5 \pm 6$                             & $12,74 \pm 0,04$              & $92,68 \pm 1,17$           \\ \hline
+        $633,0 \pm 6$                             & $15,09 \pm 0,04$              & $89,22 \pm 0,98$           \\ \hline
+        $694,3 \pm 6$                             & $16,58 \pm 0,04$              & $87,28 \pm 0,89$           \\ \hline
 	\end{tabular}
 \end{center}
 
@@ -680,14 +725,15 @@ Die Lage der Messwerte suggeriert eine lineare Abhängigkeit der Phasenverschieb
     tickpos=left,
     minor x tick num=3,
     minor y tick num=4,
-    minor grid style={dotted,thin}
+    minor grid style={dotted,thin},
+    seperators
 ]
 \addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y explicit, x dir=both, x fixed=6.00]
 table[x index={0}, y index={1}, y error index={2}] {data/delta.txt};
 \addlegendentry{Gemittelte Messwerte}
 \end{axis}
 \end{tikzpicture}
-\captionof{figure}{Wellenlängenabhängige Phasenverschiebung des Verzögerungsplättchens. Der Fehler der Wellenlänge kann mit 6nm angenommen werden, da die Halbwertsbreite $10 \pm 2$ beträgt (Quelle: Datenblatt), den Fehler der abgelesenen Werte m BSK haben wir mit 0,06 abgeschätzt.}
+\captionof{figure}{Wellenlängenabhängige Phasenverschiebung des Verzögerungsplättchens. Der Fehler der Wellenlänge kann mit 6 nm angenommen werden, da die Halbwertsbreite $10 \pm 2$ beträgt (Quelle: Datenblatt), den Fehler der abgelesenen Werte m BSK haben wir mit 0,06 abgeschätzt.}
 \end{figure}
 \end{center}
 \FloatBarrier
@@ -727,7 +773,7 @@ Aus den Fourierkoeffizienten lassen sich nun die gesuchten Stokes-Parameter wie 
  S_3 &= \frac{-S2}{sin(\delta)} 
 \end{align*}
 
-Wir können also die erzeugten Polarisationszustände mit 4 Sätzen von Stokes-Parametern klassifizieren. Die oben beschriebene Rechnung führen wir mit Mathematica durch und erhalten für jede Messung die normierten Stokes-Parameter:
+Wir können also die erzeugten Polarisationszustände mit 5 Sätzen von Stokes-Parametern klassifizieren. Die oben beschriebene Rechnung führen wir mit Mathematica durch und erhalten für jede Messung die normierten Stokes-Parameter:
 
 \begin{figure}[h]
   \begin{center}
@@ -746,7 +792,7 @@ Wir können also die erzeugten Polarisationszustände mit 4 Sätzen von Stokes-P
 
 Die genauen Messaufbauten sind unter 3.4 näher beschrieben.
 
-Als Fehler für $\alpha$ und $\beta_0$ haben wir jewals 1 Grad angenommen, der Fehler für $\delta$ wurde aus Abschnitt 4.3 übernommen.
+Als Fehler für $\alpha$ und $\beta_0$ haben wir jeweils 1 Grad angenommen, der Fehler für $\delta$ wurde aus Abschnitt 4.3 übernommen.
 
 Damit erschließt sich auch die Funktionsweise der 3D-Brille:
 Sie ist (in Blickrichtung) aus einem Linearpolarisator gefolgt von einer Verzögerungsplatte aufgebaut. Das von der Leinwand kommende, links- und rechtszirkular polarisierte Licht wird so zuerst in 2 um 90 Grad gedrehte linear polarisierte Anteile aufgespalten und überlagert sich anschließend wieder im Auge. Die beiden unterschiedlich zirkular polarisierten Anteile stellen verschiedene Bildebenen dar, die leicht zueinander verschoben sind, wodurch der 3-D-Eindruck entsteht.
@@ -773,7 +819,8 @@ Bis zu einer angelegten Stromstärke von etwa 3 mA steigt die Leistung des VCSEL
     tickpos=left,
     minor x tick num=3,
     minor y tick num=4,
-    minor grid style={dotted,thin}
+    minor grid style={dotted,thin},
+    seperators
 ]
 \addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y fixed relative=0.01, x dir=both, x fixed=0.05]
 table[x index={0},y index={1}] {data/e-P-I.txt};
@@ -806,13 +853,13 @@ Mit Hilfe des bereits in Abschnitt 4.4 beschriebenen Verfahrens lässt sich aus 
 	\end{tabular}
 \end{center}
 
-Auch hier haben wir als Fehler für $\alpha$ und $\beta_0$ haben wir jewals 1 Grad angenommen, der Fehler für $\delta$ war vorgegeben.
+Auch hier haben wir als Fehler für $\alpha$ und $\beta_0$ jeweils 1 Grad angenommen, der Fehler für $\delta$ war vorgegeben.
 
 Offensichtlich steigt der Grad der Polarisation zu Beginn stark an und erreicht dann von 4 mA bis etwa 10 mA ein Plateau mit einem Maximum bei 8 mA. Dies lässt sich durch thermische Ausdehnung im Laserresonator erklären. Offensichtlich scheint die Temperatur, welche in der Nähe von 8 mA im VCSEL vorliegt, ideal für eine Polarisation des Lichts zu sein. Da die thermische Ausdehnung bei steigender Stromstärke noch weiter steigt, nimmt die Polarisation bei höheren Stromstärken wieder ab.
 
 Die gemessenen Werte zeigen eine eindeutige lineare Polarisation des emittierten Lichts, der zirkular polarisierte Anteil ist durchweg vernachlässigbar.
 \begin{center}
-\begin{figure}[h]
+\begin{figure}[H]
 \begin{tikzpicture}
 \begin{axis}[
     legend pos=south east,
@@ -820,7 +867,7 @@ Die gemessenen Werte zeigen eine eindeutige lineare Polarisation des emittierten
     xlabel=Stromstärke in mA,
     ylabel=Grad der Polarisation,
     width=0.9\textwidth,
-    height= 9cm,
+    height= 8cm,
     xmin=0,
     xmax=13,
     grid=both,
@@ -830,7 +877,8 @@ Die gemessenen Werte zeigen eine eindeutige lineare Polarisation des emittierten
     tickpos=left,
     minor x tick num=3,
     minor y tick num=4,
-    minor grid style={dotted,thin}
+    minor grid style={dotted,thin},
+    seperators
 ]
 \addplot[red, only marks, mark=x, mark size=1pt, error bars/.cd, y dir=both, y explicit, x dir=both, x explicit]
 table[x index={0}, x error index={1}, y index={2}, y error index={3}] {data/f-stokes.txt};
@@ -840,9 +888,9 @@ table[x index={0}, x error index={1}, y index={2}, y error index={3}] {data/f-st
 \captionof{figure}{Gemessene Leistung der LED auf der Photoplatte in Abhängigkeit von der angelegten Stromstärke. Die angenommenen Fehler für die Stromstärke und die gemessene Leistung der LED betragen 0.05mA und 1 Prozent.}
 \end{figure}
 \end{center}
+\FloatBarrier 
 
 \chapter{Fazit}
-
 In diesem Versuch gelang es uns, verschiedene Polarisationsarten mit Hilfe des Stokes-Formalismus zu untersuchen. So wurden in Abschnitt 4.4 sowohl linear polarisiertes Licht in y-Richtung als auch zirkular polarisiertes Licht untersucht. Ebenfalls linear polarisiertes Licht und die Abhängigkeit des Polarisationsgrads eines VCSELs von der angelegten Stromstärke wurde in Abschnitt 4.6 genauer untersucht. Auffällig dabei war, dass bei einer angelegten Stromstärke von 8 mA beinahe vollständige Polarisation des emittierten Lichts erreicht wurde.
 
 Auch haben wir den Aufbau einer 3D-Brille untersucht und herausgefunden, dass sie (in Blickrichtung gesehen) aus einem Linearpolarisator gefolgt von einer Verzögerungsplatte aufgebaut ist.
